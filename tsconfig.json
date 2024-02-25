@@ -18,9 +18,22 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"],
+      "@pages/*": ["pages/*"],
+      "@components/*": ["components/*"],
+      "@assets/*": ["assets/*"],
+      "@icons/*": ["assets/icons/*"],
+      "@styles/*": ["assets/styles/*"]
+    },
+    "allowSyntheticDefaultImports": true
   },
   "include": [
+    "vite.config.ts",
+    "src",
     ".eslintrc.cjs",
     "src"
   ],
