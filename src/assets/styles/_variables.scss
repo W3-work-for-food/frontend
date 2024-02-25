@@ -1,0 +1,124 @@
+/**
+  ------------- COLORS -------------
+ */
+
+
+/* -- MAIN COLORS -- */
+
+$globalWhite: #FFFFFF;
+
+// Text
+
+$mainTextColor: #1A1A1A;
+$subtitlesColor: #8E8F99;
+
+// Fields, Inputs and Buttons
+
+$defaultFiledColor: #C5C2C2;
+$disabledFiledColor: #EDEDED;
+$activeFieldColor: #E4E7ED;
+$hoverFiledColor: #F5F5F5;
+
+// Main buttons
+
+$defaultBtnColor: #FFDC60;
+$hoverBtnColor: #FFD21F;
+$onclickBtnColor: #FFCC00;
+
+// Backgrounds
+
+$screensBgColor: #EBF0FF;
+
+
+/* -- SYSTEM COLORS -- */
+
+$errorsColor: #FF0200;
+$successColor: #309F27;
+$warningColor: #FCBE1E;
+$warningLightColor: #FFF5DB;
+
+
+/* -- ADDITION COLORS -- */
+
+$greenTag: #267A42;
+$lightGreenTag: #87CC9E;
+$orangeTag: #996A32;
+$lightOrangeTag: #FFC784;
+$roseTag: #BC5C73;
+$lightRoseTag: #FFDDE5;
+$blueTag: #2C64BE;
+$lightBlueTag: #ACCCFF;
+
+
+
+/**
+  ------------- FONTS -------------
+ */
+
+
+/* -- FAMILIES -- */
+
+$mainFont: 'YS', sans-serif;
+$headingsFont: 'YSD', sans-serif;
+
+
+/* -- WEIGHTS -- */
+
+$Bold: 700;
+$Medium: 500;
+$Regular: 400;
+
+
+/* -- SIZES -- */
+
+// Titles
+
+$fs-h1: 34px;
+$fs-h2: 24px;
+$fs-h3: 20px;
+
+// Subtitles
+
+$fs-subtitle: 18px;
+
+// Main text
+
+$fs-main: 16px;
+$fs-secondMain: 14px;
+
+// Addition text
+
+$fs-caption: 13px;
+$fs-secondCaption: 11px;
+
+// Hyperlinks
+
+$fs-link-sm: 14px;
+$fs-link-m: 16px;
+
+/* -- LINE HEIGHTS -- */
+
+// Titles
+
+$lh-h1: 40px;
+$lh-h2: 32px;
+$lh-h3: 24px;
+
+// Subtitles
+
+$lh-subtitle: 24px;
+
+// Main text
+
+$lh-main: 20px;
+$lh-secondMain: 20px;
+
+// Addition text
+
+$lh-caption: 16px;
+$lh-secondCaption: 12px;
+
+// Hyperlinks
+
+$lh-link-sm: 20px;
+$lh-link-m: 20px;

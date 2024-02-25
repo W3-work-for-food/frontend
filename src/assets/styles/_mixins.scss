@@ -1,0 +1,94 @@
+@import "variables";
+
+/**
+  ------------- FONTS -------------
+ */
+
+
+@mixin font-face($font-family, $font-weight, $font-style, $file-name) {
+  @font-face {
+    font-family: $font-family;
+    src: url("../fonts/#{$file-name}.ttf") format('truetype');
+    font-weight: $font-weight;
+    font-style: $font-style;
+  }
+}
+
+@mixin fontSet($ff, $fs, $fw, $lh, $fontStyle: normal) {
+  font-family: $ff;
+  font-size: $fs;
+  font-weight: $fw;
+  line-height: $lh;
+  font-style: $fontStyle;
+}
+
+@mixin H1 ($fw: $Regular) {
+  @include fontSet($headingsFont, $fs-h1, $fw, $lh-h1);
+}
+
+@mixin H2 ($fw: $Regular){
+  @include fontSet($headingsFont, $fs-h2, $fw, $lh-h2);
+}
+
+@mixin H3 ($fw: $Regular){
+  @include fontSet($headingsFont, $fs-h3, $fw, $lh-h3);
+}
+
+@mixin Subtitle ($fw: $Regular){
+  @include fontSet($mainFont, $fs-subtitle, $fw, $lh-subtitle);
+}
+
+@mixin Body1($fw: $Regular) {
+  @include fontSet($mainFont, $fs-main, $fw, $lh-main);
+}
+
+@mixin Body2($fw: $Regular) {
+  @include fontSet($mainFont, $fs-secondMain, $fw, $lh-secondMain);
+}
+
+@mixin Caption1 ($fw: $Regular){
+  @include fontSet($mainFont, $fs-caption, $fw, $lh-caption);
+}
+
+@mixin Caption2 ($fw: $Regular){
+  @include fontSet($mainFont, $fs-secondCaption, $fw, $lh-secondCaption);
+}
+
+@mixin LinkSmall {
+  @include fontSet($mainFont, $fs-link-sm, $Regular, $lh-link-sm);
+  text-decoration: underline;
+}
+
+@mixin LinkMedium {
+  @include fontSet($mainFont, $fs-link-m, $Regular, $lh-link-m);
+  text-decoration: underline;
+}
+
+/**
+  ------------- ADDITION MIXINS -------------
+ */
+
+@mixin theme($bg, $color) {
+  color: $color;
+  background-color: $bg;
+}
+
+@mixin displaySettings($display: flex, $align: center, $justify: center) {
+  display: $display;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin transitionSetting($transition: all 0.3s ease) {
+  transition: $transition;
+}
+
+@mixin borderSetting($border, $radius){
+  border: $border;
+  border-radius: $radius;
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
