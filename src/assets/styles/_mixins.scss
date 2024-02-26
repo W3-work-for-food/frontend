@@ -5,15 +5,6 @@
  */
 
 
-@mixin font-face($font-family, $font-weight, $font-style, $file-name) {
-  @font-face {
-    font-family: $font-family;
-    src: url("../fonts/#{$file-name}.ttf") format('truetype');
-    font-weight: $font-weight;
-    font-style: $font-style;
-  }
-}
-
 @mixin fontSet($ff, $fs, $fw, $lh, $fontStyle: normal) {
   font-family: $ff;
   font-size: $fs;
