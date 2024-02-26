@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss';
-import WrappedApp from '@components/Layout/App/App.tsx';
+import WrappedApp from '@components/Layout/App/App';
+import { Provider } from 'react-redux';
+import { store } from '@/store/store';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <WrappedApp />
+    <Provider store={store}>
+      <WrappedApp />
+    </Provider>
   </React.StrictMode>
 );
