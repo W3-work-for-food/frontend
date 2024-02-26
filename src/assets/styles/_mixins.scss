@@ -14,7 +14,7 @@
 }
 
 @mixin H1 ($fw: $Regular) {
-  @include fontSet($mainFont, $fs-h1, $fw, $lh-h1);
+  @include fontSet($headingsFont, $fs-h1, $fw, $lh-h1);
 }
 
 @mixin H2 ($fw: $Regular){
