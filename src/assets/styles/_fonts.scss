@@ -1,8 +1,43 @@
 @import "mixins";
 
-@include font-face("YS", 400, normal, "YS-Text-Regular");
-@include font-face("YSD", 400, normal, "YS-Display-Regular");
-@include font-face("YS", 500, normal, "YS-Text-Medium");
-@include font-face("YSD", 500, normal, "YS-Display-Medium");
-@include font-face("YS", 700, normal, "YS-Text-Bold");
-@include font-face("YSD", 700, normal, "YS-Display-Bold");
+@font-face {
+  font-family: "YS";
+  src: url("../fonts/YS-Text-Regular.ttf") format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "YS";
+  src: url("../fonts/YS-Text-Medium.ttf") format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "YS";
+  src: url("../fonts/YS-Text-Bold.ttf") format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "YSD";
+  src: url("../fonts/YS-Display-Regular.ttf") format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "YSD";
+  src: url("../fonts/YS-Display-Medium.ttf") format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "YSD";
+  src: url("../fonts/YS-Display-Bold.ttf") format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
