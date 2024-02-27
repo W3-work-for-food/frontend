@@ -1,5 +1,7 @@
+import Header from '@components/Layout/Header/Header';
+
 const Home = () => {
-  return <div>Hello World!</div>;
+  return <Header />;
 };
 
 export default Home;

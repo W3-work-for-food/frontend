@@ -1,0 +1,54 @@
+@import "variables";
+
+:export{
+  /**
+  ------------- COLORS -------------
+ */
+
+
+  /* -- MAIN COLORS -- */
+
+  globalWhite: $globalWhite;
+
+  // Text
+
+  mainTextColor: $mainTextColor;
+  subtitlesColor:$subtitlesColor;
+
+  // Fields, Inputs and Buttons
+
+  defaultFiledColor:$defaultFiledColor;
+  disabledFiledColor: $disabledFiledColor;
+  activeFieldColor: $activeFieldColor;
+  hoverFiledColor: $hoverFiledColor;
+
+  // Main buttons
+
+  defaultBtnColor: $defaultBtnColor;
+  hoverBtnColor: $hoverBtnColor;
+  onclickBtnColor: $onclickBtnColor;
+
+  // Backgrounds
+
+  screensBgColor: $screensBgColor;
+
+
+  /* -- SYSTEM COLORS -- */
+
+  errorsColor: $errorsColor;
+  successColor: $successColor;
+  warningColor: $warningColor;
+  warningLightColor: $warningLightColor;
+
+
+  /* -- ADDITION COLORS -- */
+
+  greenTag: $greenTag;
+  lightGreenTag: $lightGreenTag;
+  orangeTag: $orangeTag;
+  lightOrangeTag: $lightOrangeTag;
+  roseTag: $roseTag;
+  lightRoseTag: $lightRoseTag;
+  blueTag: $blueTag;
+  lightBlueTag:$lightBlueTag;
+}

@@ -1,0 +1,28 @@
+@import "@styles/global";
+
+.header{
+
+  &__container{
+    @include displaySettings($justify: space-between);
+    padding: 24px 53px 20px 60px;
+    width: 100%;
+  }
+
+  &__info{
+    color: $mainTextColor;
+    @include displaySettings();
+    gap: 8px;
+  }
+
+  &__userName{
+    @include Body1();
+  }
+
+  &__button{
+    @include size(40px, 40px);
+  }
+
+  &__logoutIcon{
+    @include size(18px, 18px);
+  }
+}
