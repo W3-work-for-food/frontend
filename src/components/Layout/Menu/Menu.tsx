@@ -1,4 +1,4 @@
-import { MenuItem, MenuList, styled } from '@mui/material';
+import { Box, MenuItem, MenuList, styled } from '@mui/material';
 import vars from '@styles/_export.module.scss';
 import styles from './Menu.module.scss';
 
@@ -43,7 +43,7 @@ const CustomMenuItem = styled(MenuItem)(() => ({
 
 const Menu = () => {
   return (
-    <nav className={styles.menu}>
+    <Box className={styles.menu} component="nav">
       <CustomList className={styles.menu__list}>
         {menuItems.map((item) => (
           <CustomMenuItem
@@ -55,7 +55,7 @@ const Menu = () => {
           </CustomMenuItem>
         ))}
       </CustomList>
-    </nav>
+    </Box>
   );
 };
 
