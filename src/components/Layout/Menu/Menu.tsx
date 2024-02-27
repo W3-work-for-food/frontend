@@ -31,6 +31,7 @@ const CustomMenuItem = styled(MenuItem)(() => ({
     padding: '8px 0 8px 24px',
     borderRadius: '16px',
     width: '100%',
+    minHeight: '36px',
     '&:hover': {
       backgroundColor: vars.hoverFiledColor,
     },
