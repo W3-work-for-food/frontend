@@ -1,7 +1,7 @@
-import Menu from '@components/Layout/Menu/Menu';
+import Header from '@components/Layout/Header/Header';
 
 const Home = () => {
-  return <Menu />;
+  return <Header />;
 };
 
 export default Home;
