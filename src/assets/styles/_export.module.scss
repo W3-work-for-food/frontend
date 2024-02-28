@@ -1,6 +1,6 @@
 @import "variables";
 
-:export{
+:export {
   /**
   ------------- COLORS -------------
  */
@@ -11,13 +11,17 @@
   globalWhite: $globalWhite;
 
   // Text
+  fsMain: $fs-main;
+  fsSecondMain: $fs-secondMain;
+
+  fsLineHeight: $fs-line-height;
 
   mainTextColor: $mainTextColor;
-  subtitlesColor:$subtitlesColor;
+  subtitlesColor: $subtitlesColor;
 
   // Fields, Inputs and Buttons
 
-  defaultFiledColor:$defaultFiledColor;
+  defaultFiledColor: $defaultFiledColor;
   disabledFiledColor: $disabledFiledColor;
   activeFieldColor: $activeFieldColor;
   hoverFiledColor: $hoverFiledColor;
@@ -25,8 +29,25 @@
   // Main buttons
 
   defaultBtnColor: $defaultBtnColor;
-  hoverBtnColor: $hoverBtnColor;
-  onclickBtnColor: $onclickBtnColor;
+  defaultDisabledBtnColor: $defaultDisabledBtnColor;
+  defaultDisabledBgBtnColor: $defaultDisabledBgBtnColor;
+  defaultHoverBtnColor: $defaultHoverBtnColor;
+  defaultOnClickBtnColor: $defaultOnClickBtnColor;
+
+  secondBtnColor: $secondBtnColor;
+  secondDisabledBtnColor: $secondDisabledBtnColor;
+  secondDisabledBgBtnColor: $secondDisabledBgBtnColor;
+  secondHoverBtnColor: $secondHoverBtnColor;
+  secondHoverBtnBorderColor: $secondHoverBtnBorderColor;
+  secondOnClickBtnColor: $secondOnClickBtnColor;
+
+  // Main checkboxes
+  defaultCheckboxColor: $defaultCheckboxColor;
+  defaultDisabledCheckboxColor: $defaultDisabledCheckboxColor;
+  defaultDisabledBorderCheckboxColor: $defaultDisabledBorderCheckboxColor;
+  defaultHoverCheckboxColor: $defaultHoverCheckboxColor;
+  defaultImageCheckboxColor: $defaultImageCheckboxColor;
+  defaultDisabledImageCheckboxColor: $defaultDisabledImageCheckboxColor;
 
   // Backgrounds
 
@@ -50,5 +71,19 @@
   roseTag: $roseTag;
   lightRoseTag: $lightRoseTag;
   blueTag: $blueTag;
-  lightBlueTag:$lightBlueTag;
+  lightBlueTag: $lightBlueTag;
+
+  /* -- FONTS -- */
+  mainFont: $mainFont;
+  headingsFont: $headingsFont;
+
+  Medium: $Medium;
+  Bold: $Bold;
+  SemiBold: $SemiBold;
+  Regular: $Regular;
+
+  /* -- MODIFICATORS -- */
+  borderRadius: $borderRadius;
+  borderIconRadius: $borderIconRadius;
+  sizeIcon: $sizeIcon;
 }
