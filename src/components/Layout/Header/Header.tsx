@@ -1,7 +1,7 @@
 import { AppBar, Box, Button, styled } from '@mui/material';
 import Logo from '@icons/Logo';
 import Logout from '@icons/Logout';
-import vars from '@styles/_exports.module.scss';
+import vars from '@styles/_export.module.scss';
 import styles from './Header.module.scss';
 
 const CustomHeaderBar = styled(AppBar)(() => ({
