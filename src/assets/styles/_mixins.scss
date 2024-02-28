@@ -6,11 +6,11 @@
 
 
 @mixin fontSet($ff, $fs, $fw, $lh, $fontStyle: normal) {
-  font-family: $ff;
-  font-size: $fs;
-  font-weight: $fw;
-  line-height: $lh;
-  font-style: $fontStyle;
+  font-family: $ff !important;
+  font-size: $fs !important;
+  font-weight: $fw !important;
+  line-height: $lh !important;
+  font-style: $fontStyle !important;
 }
 
 @mixin H1 ($fw: $Regular) {
