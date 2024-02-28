@@ -1,4 +1,4 @@
-import Menu from '@components/Layout/Menu/Menu';
+import Header from '@components/Layout/Header/Header';
 import Box from '@mui/material/Box';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -15,7 +15,7 @@ import Bin from '@/assets/icons/Bin';
 const Home = () => {
   return (
     <>
-      <Menu />
+      <Header />
       <Box
         style={{
           display: 'flex',
