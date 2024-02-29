@@ -22,8 +22,26 @@ $hoverFiledColor: #F9FAFB;
 // Main buttons
 
 $defaultBtnColor: #FFDC60;
-$hoverBtnColor: #FFD21F;
-$onclickBtnColor: #FFCC00;
+$defaultDisabledBtnColor: #C5C2C2;
+$defaultDisabledBgBtnColor: #EDEDED;
+$defaultHoverBtnColor: #FFD21F;
+$defaultOnClickBtnColor: #FFCC00;
+
+$secondBtnColor: #FFFFFF;
+$secondDisabledBtnColor: #C5C2C2;
+$secondDisabledBgBtnColor: #EDEDED;
+$secondHoverBtnColor: #EDEDED;
+$secondHoverBtnBorderColor: #C5C2C2;
+$secondOnClickBtnColor: #E4E7ED;
+
+// Main checkboxes
+
+$defaultCheckboxColor: #80818F;
+$defaultDisabledCheckboxColor: #EDEDED;
+$defaultDisabledBorderCheckboxColor: #C5C2C2;
+$defaultHoverCheckboxColor: #FFDC60;
+$defaultImageCheckboxColor: #1A1A1A;
+$defaultDisabledImageCheckboxColor: #80818F;
 
 // Backgrounds
 
@@ -65,6 +83,7 @@ $headingsFont: 'YSD';
 /* -- WEIGHTS -- */
 
 $Bold: 700;
+$SemiBold: 600;
 $Medium: 500;
 $Regular: 400;
 
@@ -98,6 +117,8 @@ $fs-link-m: 16px;
 
 /* -- LINE HEIGHTS -- */
 
+$fs-line-height: 20px;
+
 // Titles
 
 $lh-h1: 40px;
@@ -122,3 +143,9 @@ $lh-secondCaption: 12px;
 
 $lh-link-sm: 20px;
 $lh-link-m: 20px;
+
+// Borders
+
+$borderRadius: 16px;
+$borderIconRadius: 12px;
+$sizeIcon: 24px;
