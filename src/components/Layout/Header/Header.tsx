@@ -9,6 +9,7 @@ const CustomHeaderBar = styled(AppBar)(() => ({
     flexDirection: 'row',
     backgroundColor: 'transparent',
     boxShadow: 'none',
+    position: 'relative',
   },
 }));
 

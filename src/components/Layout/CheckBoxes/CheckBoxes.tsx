@@ -8,14 +8,14 @@ const BpIcon = styled('span')(() => ({
   width: `${vars.sizeIcon}`,
   height: `${vars.sizeIcon}`,
   boxShadow: `0 0 0 1px ${vars.defaultCheckboxColor}`,
-  backgroundColor: '#ffffff',
+  backgroundColor: `${vars.globalWhite}`,
   backgroundImage:
     'linear-gradient(180deg,hsla(0,0%,100%,.05),hsla(0,0%,100%,0))',
   '.Mui-focusVisible &': {
     outline: '2px auto rgba(0, 0, 0, 0.05)',
   },
   'input:hover ~ &': {
-    backgroundColor: '#ffffff',
+    backgroundColor: `${vars.globalWhite}`,
     boxShadow: `0 0 0 1px ${vars.defaultHoverCheckboxColor}`,
   },
   'input:disabled ~ &': {
@@ -55,8 +55,7 @@ const BpCheckedIcon = styled(BpIcon)({
   },
 });
 
-// eslint-disable-next-line import/prefer-default-export
-export const MainCheckbox = (props: CheckboxProps): JSX.Element => {
+const MainCheckbox = (props: CheckboxProps): JSX.Element => {
   return (
     <Checkbox
       disableRipple
@@ -64,7 +63,10 @@ export const MainCheckbox = (props: CheckboxProps): JSX.Element => {
       checkedIcon={<BpCheckedIcon />}
       icon={<BpIcon />}
       inputProps={{ 'aria-label': 'Checkbox demo' }}
+      // eslint-disable-next-line react/jsx-props-no-spreading
       {...props}
     />
   );
 };
+
+export default MainCheckbox;
