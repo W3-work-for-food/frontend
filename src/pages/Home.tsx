@@ -1,102 +1,31 @@
-import Header from '@components/Layout/Header/Header';
-import Box from '@mui/material/Box';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import AddIcon from '@mui/icons-material/Add';
-import {
-  IconButton,
-  PrimaryButton,
-  SecondaryButton,
-} from '@/components/Layout/Buttons/Buttons';
-import MainCheckbox from '@/components/Layout/CheckBoxes/CheckBoxes';
-import Logout from '@/assets/icons/Logout';
-import Bin from '@/assets/icons/Bin';
+import Statuses from '@constants/statuses';
+import Notifications from '@constants/notifications';
+import { Box } from '@mui/material';
+import StatusBadge from '@/components/ui/Badges/StatusBadge/StatusBadge';
+import Notification from '@/components/ui/Badges/Notification/Notification';
 
 const Home = () => {
   return (
-    <>
-      <Header />
+    <Box style={{ display: 'flex', flexDirection: 'row', margin: '30px' }}>
       <Box
         style={{
           display: 'flex',
-          padding: '24px',
-          margin: '24px',
-          flexDirection: 'row',
-          gap: '16px',
-          backgroundColor: 'rgba(0, 0, 0, 0.05)',
+          flexDirection: 'column',
+          marginRight: '20px',
+          gap: '10px',
         }}
       >
-        <PrimaryButton>Primary</PrimaryButton>
-        <PrimaryButton disabled>Primary</PrimaryButton>
-        <PrimaryButton startIcon={<AddIcon />}>Primary</PrimaryButton>
-        <PrimaryButton startIcon={<AddIcon />} disabled>
-          Primary
-        </PrimaryButton>
-        <SecondaryButton>Secondary</SecondaryButton>
-        <SecondaryButton disabled>Secondary</SecondaryButton>
+        <StatusBadge status={Statuses.ACTIVE} />
+        <StatusBadge status={Statuses.PAUSED} />
+        <StatusBadge status={Statuses.NOT_AMBASSADOR} />
+        <StatusBadge status={Statuses.PENDING} />
       </Box>
-      <Box
-        style={{
-          display: 'flex',
-          padding: '24px',
-          margin: '24px',
-          flexDirection: 'row',
-          gap: '16px',
-          backgroundColor: 'rgba(0, 0, 0, 0.05)',
-        }}
-      >
-        <IconButton startIcon={<Bin />} />
-        <IconButton startIcon={<Logout />} />
-        <IconButton startIcon={<Logout />} />
-        <IconButton className="">1</IconButton>
-        <IconButton className="active">99</IconButton>
-        <IconButton disabled className="active">
-          55
-        </IconButton>
-        <IconButton disabled startIcon={<Bin />} />
-        <IconButton disabled startIcon={<Logout />} />
+      <Box style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        <Notification status={Notifications.NEW_APPLICATION} />
+        <Notification status={Notifications.NEW_CONTENT} />
+        <Notification status={Notifications.GUIDE_COMPLETE} />
       </Box>
-      <Box
-        style={{
-          display: 'flex',
-          padding: '24px',
-          margin: '24px',
-          flexDirection: 'row',
-          gap: '16px',
-          backgroundColor: 'rgba(0, 0, 0, 0.05)',
-        }}
-      >
-        <MainCheckbox defaultChecked />
-        <MainCheckbox />
-        <MainCheckbox disabled />
-        <MainCheckbox disabled checked />
-      </Box>
-      <FormGroup
-        style={{
-          display: 'flex',
-          padding: '24px',
-          margin: '24px',
-          flexDirection: 'row',
-          gap: '16px',
-          backgroundColor: 'rgba(0, 0, 0, 0.05)',
-        }}
-      >
-        <FormControlLabel
-          control={<MainCheckbox defaultChecked />}
-          label="Label"
-        />
-        <FormControlLabel
-          required
-          control={<MainCheckbox />}
-          label="Required"
-        />
-        <FormControlLabel
-          disabled
-          control={<MainCheckbox />}
-          label="Disabled"
-        />
-      </FormGroup>
-    </>
+    </Box>
   );
 };
 

@@ -24,7 +24,9 @@
     "paths": {
       "@/*": ["*"],
       "@pages/*": ["pages/*"],
-      "@components/*": ["components/*"],
+      "@components": ["components/*"],
+      "@store/*": ["store/*"],
+      "@constants/*": ["constants/*"],
       "@assets/*": ["assets/*"],
       "@icons/*": ["assets/icons/*"],
       "@styles/*": ["assets/styles/*"]

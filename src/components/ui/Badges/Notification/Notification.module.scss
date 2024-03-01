@@ -1,0 +1,20 @@
+@import "@styles/global";
+
+.notification{
+  padding: 6px 12px;
+  border-radius: 16px;
+  @include Body1($Medium);
+  display: inline-block;
+}
+
+.orange {
+  @include theme($lightOrangeTag, $orangeTag);
+}
+
+.blue {
+  @include theme($lightBlueTag, $blueTag);
+}
+
+.green {
+  @include theme($lightGreenTag, $greenTag);
+}
