@@ -5,7 +5,7 @@ body {
   min-width: 320px;
   height: 100%;
   @include Body1();
-  @include theme($globalWhite, $mainTextColor);
+  @include theme($screensBgColor, $mainTextColor);
   margin: 0 auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
