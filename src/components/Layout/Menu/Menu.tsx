@@ -44,17 +44,19 @@ const CustomMenuItem = styled(MenuItem)(() => ({
 const Menu = () => {
   return (
     <Box className={styles.menu} component="nav">
-      <CustomList className={styles.menu__list}>
-        {menuItems.map((item) => (
-          <CustomMenuItem
-            className={styles.menu__item}
-            key={item.id}
-            disableRipple
-          >
-            {item.name}
-          </CustomMenuItem>
-        ))}
-      </CustomList>
+      <Box className={styles.menu__container} component="div">
+        <CustomList className={styles.menu__list}>
+          {menuItems.map((item) => (
+            <CustomMenuItem
+              className={styles.menu__item}
+              key={item.id}
+              disableRipple
+            >
+              {item.name}
+            </CustomMenuItem>
+          ))}
+        </CustomList>
+      </Box>
     </Box>
   );
 };
