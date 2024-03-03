@@ -14,12 +14,20 @@ $subtitlesColor: #80818F;
 
 // Fields, Inputs and Buttons
 
+$defaultInputBorderColor: #EFF2F7;
+$defaultInputBgColor: #EFF2F7;
+$defaultInputHoverBorderColor: #C5C2C2;
+$defaultInputFocusedBorderColor: #80818F;
+
+
 $defaultFiledColor: #C5C2C2;
 $disabledFiledColor: #EDEDED;
 $activeFieldColor: #E4E7ED;
 $hoverFiledColor: #F9FAFB;
 
 // Main buttons
+
+$paddingsButtons : 10px 32px;
 
 $defaultBtnColor: #FFDC60;
 $defaultDisabledBtnColor: #C5C2C2;
@@ -33,6 +41,16 @@ $secondDisabledBgBtnColor: #EDEDED;
 $secondHoverBtnColor: #EDEDED;
 $secondHoverBtnBorderColor: #C5C2C2;
 $secondOnClickBtnColor: #E4E7ED;
+
+$inverseBtnColor: #EDEDED;
+$inverseBtnBorderColor: #EDEDED;
+$inverseHoverBtnColor: #EDEDED;
+$inverseHoverBtnBorderColor: #C5C2C2;
+$inverseOnClickBtnColor: #E4E7ED;
+$inverseOnClickBtnBorderColor: #C5C2C2;
+$inverseDisabledBgBtnColor: #EDEDED;
+$inverseDisabledBgBtnColor: #EDEDED;
+$inverseDisabledBtnColor: #C5C2C2;
 
 // Main checkboxes
 
@@ -148,4 +166,14 @@ $lh-link-m: 20px;
 
 $borderRadius: 16px;
 $borderIconRadius: 12px;
+
+// Icons
+
 $sizeIcon: 24px;
+
+// Modals
+
+$modalWidthMin: 446;
+$modalWidthMid: 470;
+$modalWidthMax: 600;
+$modalPadding: 48;

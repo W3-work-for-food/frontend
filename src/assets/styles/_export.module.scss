@@ -11,8 +11,11 @@
   globalWhite: $globalWhite;
 
   // Text
+  fsSubTitle: $fs-subtitle;
   fsMain: $fs-main;
   fsSecondMain: $fs-secondMain;
+  fsCaption: $fs-caption;
+  fsSecondCaption: $fs-secondCaption;
 
   fsLineHeight: $fs-line-height;
 
@@ -21,12 +24,19 @@
 
   // Fields, Inputs and Buttons
 
+  defaultInputBorderColor: $defaultInputBorderColor;
+  defaultInputBgColor: $defaultInputBgColor;
+  defaultInputHoverBorderColor: $defaultInputHoverBorderColor;
+  defaultInputFocusedBorderColor: $defaultInputFocusedBorderColor;
+
   defaultFiledColor: $defaultFiledColor;
   disabledFiledColor: $disabledFiledColor;
   activeFieldColor: $activeFieldColor;
   hoverFiledColor: $hoverFiledColor;
 
   // Main buttons
+
+  paddingsButtons: $paddingsButtons;
 
   defaultBtnColor: $defaultBtnColor;
   defaultDisabledBtnColor: $defaultDisabledBtnColor;
@@ -40,6 +50,19 @@
   secondHoverBtnColor: $secondHoverBtnColor;
   secondHoverBtnBorderColor: $secondHoverBtnBorderColor;
   secondOnClickBtnColor: $secondOnClickBtnColor;
+
+
+  inverseBtnColor: $inverseBtnColor;
+  inverseBtnBorderColor: $inverseBtnBorderColor;
+  inverseHoverBtnColor: $inverseHoverBtnColor;
+  inverseHoverBtnBorderColor: $inverseHoverBtnBorderColor;
+  inverseOnClickBtnColor: $inverseOnClickBtnColor;
+  inverseOnClickBtnBorderColor: $inverseOnClickBtnBorderColor;
+  inverseDisabledBgBtnColor: $inverseDisabledBgBtnColor;
+  inverseDisabledBgBtnColor: $inverseDisabledBgBtnColor;
+  inverseDisabledBtnColor: $inverseDisabledBtnColor;
+
+
 
   // Main checkboxes
   defaultCheckboxColor: $defaultCheckboxColor;
@@ -86,4 +109,10 @@
   borderRadius: $borderRadius;
   borderIconRadius: $borderIconRadius;
   sizeIcon: $sizeIcon;
+
+  modalWidthMin: $modalWidthMin;
+  modalWidthMid: $modalWidthMid;
+  modalWidthMax: $modalWidthMax;
+  modalPadding: $modalPadding;
+
 }

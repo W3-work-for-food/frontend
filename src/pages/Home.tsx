@@ -7,8 +7,8 @@ import {
   IconButton,
   PrimaryButton,
   SecondaryButton,
-} from '@/components/Layout/Buttons/Buttons';
-import MainCheckbox from '@/components/Layout/CheckBoxes/CheckBoxes';
+} from '@/components/ui/Buttons/Buttons';
+import MainCheckbox from '@/components/ui/CheckBoxes/CheckBoxes';
 import Logout from '@/assets/icons/Logout';
 import Bin from '@/assets/icons/Bin';
 
