@@ -4,6 +4,7 @@
   border: none !important;
   @include Body1();
   @include displaySettings($justify: space-between);
+  color: $mainTextColor !important;
 }
 
 .telegram{

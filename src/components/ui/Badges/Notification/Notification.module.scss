@@ -3,7 +3,7 @@
 .notification{
   padding: 6px 12px;
   border-radius: 16px;
-  @include Body1($Medium);
+  @include Caption1($Medium);
   display: inline-block;
 }
 
