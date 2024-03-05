@@ -5,12 +5,14 @@ import Header from '@components/Layout/Header/Header';
 import Menu from '@components/Layout/Menu/Menu';
 import React, { FC } from 'react';
 import styles from './App.module.scss';
+import Ambassadors from '@/pages/Ambassadors';
 
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="*" element={<NotFound />} />
+      <Route path="/ambassadors" element={<Ambassadors />} />
     </Routes>
   );
 };

@@ -33,12 +33,15 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
       borderRadius: '3px',
     },
   },
+  '.MuiDataGrid-virtualScrollerContent': {
+    height: 'initial !important',
+  },
   '.MuiToolbar-root': {
     minHeight: '40px',
   },
   '.MuiDataGrid-main': {
     width: '100%',
-    maxHeight: '440px',
+    maxHeight: '496px',
   },
   '.MuiDataGrid-columnHeaders': {
     fontFamily: 'YS',
@@ -173,7 +176,7 @@ interface TableProps {
 
 const Table: FC<TableProps> = ({ columns, rows }) => {
   return (
-    <div style={{ height: 524, width: '100%' }}>
+    <div style={{ height: 580, width: '100%' }}>
       <CustomDataGrid
         className={styles.table}
         rows={rows}

@@ -1,6 +1,8 @@
 @import "@styles/global";
 
 .template {
+  max-width: 1440px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 208px 1fr;
   grid-template-areas:

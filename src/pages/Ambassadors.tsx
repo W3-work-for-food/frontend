@@ -1,9 +1,9 @@
 import { ambassadorColumns } from '@constants/tableColumns';
 import { ambassadorRows } from '@constants/tableRows';
-import Table from '@/components/Table/Table';
 import Content from '@/components/Layout/Content/Content';
+import Table from '@/components/Table/Table';
 
-const Home = () => {
+const Ambassadors = () => {
   return (
     <>
       <div style={{ gridArea: 'controls', height: '76px' }} />
@@ -14,4 +14,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Ambassadors;
