@@ -4,6 +4,8 @@ import { login, logout, getuser } from './authAPI';
 export interface IUser {
   id: number;
   email: string;
+  first_name: string;
+  last_name: string;
 }
 
 interface IAuthState {
@@ -63,6 +65,8 @@ const initialState: IAuthState = {
   user: {
     id: 0,
     email: '',
+    first_name: '',
+    last_name: '',
   } as IUser,
   accessToken: '',
   isLoading: true,
@@ -89,9 +93,9 @@ const authSlice = createSlice({
           isLoading: false,
           isLoggedIn: true,
           user: action.payload,
-          accessToken: action.payload.auth_token,
+          accessToken: action.payload.token,
         };
-        localStorage.setItem('accessToken', action.payload.auth_token);
+        localStorage.setItem('accessToken', action.payload.token);
         return newState;
       })
       .addCase(loginUser.rejected, (state, action) => {
@@ -118,8 +122,10 @@ const authSlice = createSlice({
           user: {
             id: 0,
             email: '',
-            accessToken: '',
+            first_name: '',
+            last_name: '',
           },
+          accessToken: '',
         };
         // eslint-disable-next-line no-console
         console.log(action);
@@ -145,7 +151,7 @@ const authSlice = createSlice({
           ...state,
           isLoading: false,
           isLoggedIn: true,
-          user: action.payload,
+          user: action.payload[0],
         };
       })
       .addCase(getProfileUser.rejected, (state, action) => {
