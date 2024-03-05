@@ -21,3 +21,7 @@
   border: 3px solid $lightGreenTag;
   grid-area: content;
 }
+
+.footer{
+  @include Body1();
+}

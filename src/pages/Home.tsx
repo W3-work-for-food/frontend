@@ -1,5 +1,5 @@
-import { notificationPageTableColumns } from '@constants/tableColumns';
-import { notificationsRows } from '@constants/tableRows';
+import { ambassadorColumns } from '@constants/tableColumns';
+import { ambassadorRows } from '@constants/tableRows';
 import Table from '@/components/Table/Table';
 import Content from '@/components/Layout/Content/Content';
 
@@ -9,8 +9,8 @@ const Home = () => {
       <div style={{ gridArea: 'controls', height: '76px' }} />
       <Content>
         <Table
-          columns={notificationPageTableColumns}
-          rows={notificationsRows}
+          columns={ambassadorColumns}
+          rows={ambassadorRows}
         />
       </Content>
     </>

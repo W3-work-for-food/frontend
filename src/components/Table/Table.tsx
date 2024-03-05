@@ -14,11 +14,30 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
     width: '100%',
     borderTop: 'none',
     minHeight: '40px',
+
+    '& .MuiTablePagination-root, & .MuiDataGrid-selectedRowCount, & .MuiDataGrid-filterForm':
+      {
+        display: 'none',
+      },
+  },
+  '& .MuiDataGrid-virtualScroller': {
+    '&::-webkit-scrollbar': {
+      width: '6px',
+      height: '278px',
+    },
+    '&::-webkit-scrollbar-track': {
+      backgroundColor: 'transparent',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: vars.defaultFiledColor,
+      borderRadius: '3px',
+    },
   },
   '.MuiToolbar-root': {
     minHeight: '40px',
   },
   '.MuiDataGrid-main': {
+    width: '100%',
     maxHeight: '440px',
   },
   '.MuiDataGrid-columnHeaders': {
@@ -41,6 +60,7 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
     height: '48px !important',
     maxHeight: '48px !important',
     minHeight: '48px !important',
+    padding: '0 0 0 12px',
 
     '&:focus': {
       outline: 'none',
@@ -55,10 +75,6 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
         },
       },
     }),
-
-    '&:not(:first-child)': {
-      padding: '0 0 0 12px',
-    },
   },
   '.MuiDataGrid-columnSeparator': {
     display: 'none',
@@ -71,6 +87,10 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
     minHeight: '55px !important',
     alignItems: 'center',
     borderBottom: `1px solid ${vars.disabledFiledColor}`,
+
+    '&:hover': {
+      backgroundColor: vars.screensBgColor,
+    },
 
     '&.Mui-selected': {
       backgroundColor: vars.screensBgColor,
@@ -107,6 +127,24 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
     padding: '0',
   },
 }));
+
+interface CustomFooterProps {
+  count: number;
+}
+
+const CustomFooter: FC<CustomFooterProps> = ({ count }) => (
+  <div
+    style={{
+      alignItems: 'center',
+      display: 'flex',
+      height: '40px',
+      width: '100%',
+    }}
+    className={styles.footer}
+  >
+    Всего: {count}
+  </div>
+);
 
 interface AmbassadorRow {
   id: number;
@@ -148,6 +186,7 @@ const Table: FC<TableProps> = ({ columns, rows }) => {
         checkboxSelection={columns === notificationPageTableColumns}
         slots={{
           baseCheckbox: MainCheckbox,
+          footer: () => <CustomFooter count={rows.length} />,
         }}
       />
     </div>
