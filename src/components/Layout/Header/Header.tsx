@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Box } from '@mui/material';
 import Logo from '@icons/Logo';
 import Logout from '@icons/Logout';
+import { useNavigate } from 'react-router-dom';
 import { IconButton } from '../../ui/Buttons/Buttons';
 import styles from './Header.module.scss';
 import UniversalModal from '@/components/ui/Modal/Modal';
@@ -11,9 +12,11 @@ import {
 } from '@/components/ui/Form/Elements';
 import { useAppSelector } from '@/services/typeHooks';
 import { RootState } from '@/services/redux/store';
+import { ROUTE_LOGOUT } from '@/utils/constants';
 
 const Header = () => {
   const user = useAppSelector((state: RootState) => state.user.user);
+  const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -24,9 +27,9 @@ const Header = () => {
     setModalOpen(false);
   };
   const handleLogout = () => {
-    // Add code here for logging out, e.g., navigate to /logout
     // console.log('Logging out');
     handleCloseModal();
+    navigate(ROUTE_LOGOUT);
   };
 
   const handleCancel = () => {

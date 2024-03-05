@@ -8,6 +8,7 @@ import { getProfileUser, logoutUser } from '@/services/redux/slices/auth/auth';
 import { useAppDispatch, useAppSelector } from '@/services/typeHooks';
 import { RootState } from '@/services/redux/store';
 import './App.module.scss';
+import Logout from '@/pages/Logout';
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -24,7 +25,8 @@ const App = () => {
     } else {
       dispatch(logoutUser({ access }));
     }
-  }, [access, dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]);
 
   if (isLoading) {
     return (
@@ -37,6 +39,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/logout" element={<Logout />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
