@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from '@pages/Home';
 import NotFound from '@pages/NotFound';
-import Header from '@components/Layout/Header/Header';
-import Menu from '@components/Layout/Menu/Menu';
 import React, { FC } from 'react';
 import styles from './App.module.scss';
 import Ambassadors from '@/pages/Ambassadors';
+import Header from '@/components/Layout/Header/Header';
+import Menu from '@/components/Layout/Menu/Menu';
 
 const App = () => {
   return (
