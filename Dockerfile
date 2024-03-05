@@ -18,7 +18,7 @@ RUN yarn install
 # RUN yarn add @esbuild/linux-x64
 
 # Make port 3000 available to the world outside this container
-EXPOSE 3000
+EXPOSE 80
 
 # Define environment variable
 ENV NODE_ENV=development

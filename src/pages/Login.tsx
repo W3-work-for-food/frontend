@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Box, IconButton, InputAdornment } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { loginSchema } from '@/utils/validationSchema';
+import loginSchema from '@/utils/validationSchema';
 import styles from './Login.module.scss';
 
 import {
@@ -13,15 +14,19 @@ import {
   DefaultInput,
   DefaultLabel,
   DefaultOutlinedInput,
+  ErrorLabel,
 } from '@/components/ui/Form/Elements';
 import { PrimaryButton } from '@/components/ui/Buttons/Buttons';
 import Logo from '@/assets/icons/Logo';
+import { useAppDispatch } from '@/services/typeHooks';
+import { getProfileUser, loginUser } from '@/services/redux/slices/auth/auth';
 
 const LoginPage = () => {
-  //   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [emailС, setEmail] = useState('');
   const [passwordС, setPassword] = useState('');
-  // const [error, setError] = useState('');
+  const [error, setError] = useState('');
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -53,9 +58,32 @@ const LoginPage = () => {
   };
 
   // Form submission handler
-  const onSubmit: SubmitHandler<LoginFormInputs> = () => {
-    // Вызываем loginUse
+  const onSubmit: SubmitHandler<LoginFormInputs> = (data) => {
+    const email = data.email as string;
+    const password = data.password as string;
+
+    // Вызываем loginUser action с данными из формы
+    dispatch(loginUser({ email, password })).then((resultAction) => {
+      if (loginUser.fulfilled.match(resultAction)) {
+        // После успешного входа, пользователь будет перенаправлен на главную страницу
+        const access = localStorage.getItem('accessToken') ?? '';
+        dispatch(getProfileUser({ access }));
+        navigate('/');
+      } else {
+        // Если вход не успешный, устанавливаем состояние ошибки
+        setError(
+          'Не удается войти. Пожалуйста, проверь правильность написания логина и пароля'
+        );
+      }
+    });
   };
+
+  interface Props {
+    field: {
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+      value: string;
+    };
+  }
 
   return (
     <FormContainer className={styles.containerLogin}>
@@ -71,7 +99,7 @@ const LoginPage = () => {
               flexDirection: 'column',
             }}
           >
-            {/* {error && <ErrorLabel>{error}</ErrorLabel>} */}
+            {error && <ErrorLabel>{error}</ErrorLabel>}
           </Box>
           <DefaultLabel style={{ textAlign: 'left' }}>E-mail</DefaultLabel>
           <FormControl
@@ -84,19 +112,19 @@ const LoginPage = () => {
               control={control}
               name="email"
               defaultValue={emailС}
-              render={() => (
+              render={(props: Props) => (
                 <DefaultInput
                   autoComplete="off"
                   type="email"
-                  // {...props.field}
+                  value={props.field.value}
                   fullWidth
                   placeholder="Введите E-mail"
                   autoFocus
                   id="email"
-                  onChange={(e) => {
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setValue('email', e.target.value);
                     setEmail(e.target.value);
-                    // props.field.onChange(e);
+                    props.field.onChange(e);
                   }}
                   error={getInputError('email')}
                 />
@@ -121,8 +149,7 @@ const LoginPage = () => {
               defaultValue={passwordС}
               render={(props) => (
                 <DefaultOutlinedInput
-                  // eslint-disable-next-line react/jsx-props-no-spreading, react/prop-types
-                  {...props.field}
+                  value={props.field.value}
                   fullWidth
                   placeholder="Введите пароль"
                   type={showPassword ? 'text' : 'password'}
@@ -142,7 +169,7 @@ const LoginPage = () => {
                   onChange={(e) => {
                     setValue('password', e.target.value);
                     setPassword(e.target.value);
-                    // props.field.onChange(e);
+                    props.field.onChange(e);
                   }}
                   error={getInputError('password')}
                 />
