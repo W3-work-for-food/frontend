@@ -2,6 +2,6 @@
 
 .tab {
   &__text {
-    @include Subtitle(400);
+    @include Subtitle($Regular);
   }
 }

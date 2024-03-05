@@ -13,10 +13,8 @@ interface CustomLinkProps {
 
 const StyledLink = styled(Link)(() => ({
   '&': {
-    textDecoration: 'none',
     color: `${vars.subtitlesColor}`,
     '&:hover': {
-      textDecoration: 'underline',
       color: `${vars.mainTextColor}`,
     },
   },

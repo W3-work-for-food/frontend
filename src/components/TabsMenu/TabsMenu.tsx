@@ -38,13 +38,13 @@ const TabsMenu: React.FC<TabsMenuProps> = ({ variant }) => {
       : ['Общая информация', 'Размещенный контент', 'Программа лояльности'];
 
   return (
-    <Box sx={{ width: '100%', margin: '300px' }}>
+    <Box>
       <Tabs
         onChange={handleChange}
         value={value}
         aria-label="Menu tabs"
         TabIndicatorProps={{
-          style: { background: '#FFDC60', height: '4px' },
+          style: { background: `${vars.defaultBtnColor}`, height: '4px' },
         }}
       >
         {tabLabels.map((label: string) => (
