@@ -1,21 +1,19 @@
 import { useState } from 'react';
-import { AppBar, Box, Typography, styled } from '@mui/material';
+import { Box } from '@mui/material';
 import Logo from '@icons/Logo';
 import Logout from '@icons/Logout';
 import { IconButton } from '../../ui/Buttons/Buttons';
 import styles from './Header.module.scss';
 import UniversalModal from '@/components/ui/Modal/Modal';
-
-const CustomHeaderBar = styled(AppBar)(() => ({
-  '&.MuiAppBar-root': {
-    flexDirection: 'row',
-    backgroundColor: 'transparent',
-    boxShadow: 'none',
-    position: 'relative',
-  },
-}));
+import {
+  CustomHeaderBar,
+  DefaultTypography,
+} from '@/components/ui/Form/Elements';
+import { useAppSelector } from '@/services/typeHooks';
+import { RootState } from '@/services/redux/store';
 
 const Header = () => {
+  const user = useAppSelector((state: RootState) => state.user.user);
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -27,19 +25,21 @@ const Header = () => {
   };
   const handleLogout = () => {
     // Add code here for logging out, e.g., navigate to /logout
-    console.log('Logging out');
+    // console.log('Logging out');
     handleCloseModal();
   };
 
   const handleCancel = () => {
-    console.log('Cancel button clicked');
+    // console.log('Cancel button clicked');
     handleCloseModal();
   };
 
   const modalContent = (
-    <Typography variant="body1">
-      Вы действительно хотите выйти из учетной записи?
-    </Typography>
+    <DefaultTypography style={{ fontSize: 16, marginBottom: 32 }}>
+      Вы действительно хотите
+      <br />
+      выйти из учетной записи?
+    </DefaultTypography>
   );
 
   return (
@@ -48,7 +48,7 @@ const Header = () => {
         <Logo className={styles.header__logo} />
         <Box className={styles.header__info} component="div">
           <Box className={styles.header__userName} component="p">
-            Мария Иванова
+            {user.email}
           </Box>
           <IconButton onClick={handleOpenModal} startIcon={<Logout />} />
           <UniversalModal

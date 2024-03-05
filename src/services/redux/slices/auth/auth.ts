@@ -121,6 +121,7 @@ const authSlice = createSlice({
             accessToken: '',
           },
         };
+        // eslint-disable-next-line no-console
         console.log(action);
         return newState;
       })
