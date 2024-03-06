@@ -20,6 +20,7 @@ import {
   DefaultInput,
   DefaultOutlinedInput,
 } from '@/components/ui/Inputs/Inputs';
+import { ROUTE_HOME } from '@/utils/constants';
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -50,7 +51,7 @@ const Login = () => {
     formState: { errors },
   } = useForm<LoginFormInputs>({
     resolver: yupResolver<LoginFormInputs>(loginSchema),
-    mode: 'onChange',
+    mode: 'onSubmit',
   });
 
   const getInputError = (fieldName: string) => {
@@ -68,11 +69,12 @@ const Login = () => {
         // После успешного входа, пользователь будет перенаправлен на главную страницу
         const access = localStorage.getItem('accessToken') ?? '';
         dispatch(getProfileUser({ access }));
-        navigate('/');
+        navigate(ROUTE_HOME);
       } else {
         // Если вход не успешный, устанавливаем состояние ошибки
+        console.log(resultAction.error.message as string);
         setError(
-          'Не удается войти. Пожалуйста, проверь правильность написания логина и пароля'
+          'Не удается войти. Пожалуйста, проверьте правильность написания логина и пароля'
         );
       }
     });
@@ -86,7 +88,7 @@ const Login = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} data-testid="loginForm">
+    <form noValidate onSubmit={handleSubmit(onSubmit)} data-testid="loginForm">
       <Logo />
       <Box
         sx={{
