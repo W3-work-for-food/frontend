@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Box, IconButton, InputAdornment } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { useSelector } from 'react-redux';
 import loginSchema from '@/utils/validationSchema';
 
 import {
@@ -15,21 +15,31 @@ import {
 import { PrimaryButton } from '@/components/ui/Buttons/Buttons';
 import Logo from '@/assets/icons/Logo';
 import { useAppDispatch } from '@/services/typeHooks';
-import { getProfileUser, loginUser } from '@/services/redux/slices/auth/auth';
+import {
+  getProfileUser,
+  loginUser,
+  selectError,
+} from '@/services/redux/slices/auth/auth';
 import {
   DefaultInput,
   DefaultOutlinedInput,
 } from '@/components/ui/Inputs/Inputs';
 import { ROUTE_HOME } from '@/utils/constants';
+import SlashedEye from '@/assets/icons/SlashedEye';
+import Eye from '@/assets/icons/Eye';
 
 const Login = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [emailС, setEmail] = useState('');
   const [passwordС, setPassword] = useState('');
-  const [error, setError] = useState('');
 
   const [showPassword, setShowPassword] = useState(false);
+  const error = useSelector(selectError);
+
+  useEffect(() => {
+    // console.log(error);
+  }, [error]); // Подписываемся на изменения error
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -70,12 +80,6 @@ const Login = () => {
         const access = localStorage.getItem('accessToken') ?? '';
         dispatch(getProfileUser({ access }));
         navigate(ROUTE_HOME);
-      } else {
-        // Если вход не успешный, устанавливаем состояние ошибки
-        console.log(resultAction.error.message as string);
-        setError(
-          'Не удается войти. Пожалуйста, проверьте правильность написания логина и пароля'
-        );
       }
     });
   };
@@ -99,7 +103,12 @@ const Login = () => {
           flexDirection: 'column',
         }}
       >
-        {error && <ErrorLabel>{error}</ErrorLabel>}
+        {error && (
+          <ErrorLabel>
+            Не удается войти. Пожалуйста, проверьте правильность написания
+            логина и пароля
+          </ErrorLabel>
+        )}
       </Box>
       <DefaultLabel style={{ textAlign: 'left' }}>E-mail</DefaultLabel>
       <FormControl
@@ -161,7 +170,7 @@ const Login = () => {
                     onMouseDown={handleMouseDownPassword}
                     edge="end"
                   >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                    {showPassword ? <SlashedEye /> : <Eye />}
                   </IconButton>
                 </InputAdornment>
               }

@@ -24,4 +24,4 @@ EXPOSE 8001
 ENV NODE_ENV=development
 
 # Run the build script using Yarn
-CMD ["yarn", "dev"]
+CMD ["yarn", "build"]

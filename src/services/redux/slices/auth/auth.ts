@@ -13,7 +13,7 @@ interface IAuthState {
   accessToken: string;
   isLoading: boolean;
   isLoggedIn: boolean;
-  error: string | null;
+  error: string;
 }
 
 export const loginUser = createAsyncThunk(
@@ -71,7 +71,7 @@ const initialState: IAuthState = {
   accessToken: '',
   isLoading: true,
   isLoggedIn: false,
-  error: null,
+  error: '',
 };
 
 const authSlice = createSlice({
@@ -90,10 +90,11 @@ const authSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         const newState = {
           ...state,
+          user: action.payload,
           isLoading: false,
           isLoggedIn: true,
-          user: action.payload,
           accessToken: action.payload.token,
+          error: '',
         };
         localStorage.setItem('accessToken', action.payload.token);
         return newState;
@@ -113,7 +114,7 @@ const authSlice = createSlice({
           isLoggedIn: false,
         };
       })
-      .addCase(logoutUser.fulfilled, (state, action) => {
+      .addCase(logoutUser.fulfilled, (state) => {
         localStorage.removeItem('accessToken');
         const newState = {
           ...state,
@@ -126,9 +127,8 @@ const authSlice = createSlice({
             last_name: '',
           },
           accessToken: '',
+          error: '',
         };
-        // eslint-disable-next-line no-console
-        console.log(action);
         return newState;
       })
       .addCase(logoutUser.rejected, (state, action) => {
@@ -152,12 +152,19 @@ const authSlice = createSlice({
           isLoading: false,
           isLoggedIn: true,
           user: action.payload[0],
+          error: '',
         };
       })
       .addCase(getProfileUser.rejected, (state, action) => {
         return {
           ...state,
           isLoading: false,
+          user: {
+            id: 0,
+            email: '',
+            first_name: '',
+            last_name: '',
+          },
           error: action.payload as string,
         };
       });
@@ -174,6 +181,6 @@ export const selectLoggedIn = (state: { isLoggedIn: IAuthState }) =>
 export const selectLoading = (state: { isLoading: IAuthState }) =>
   state.isLoading;
 
-export const selectError = (state: { error: IAuthState }) => state.error;
+export const selectError = (state: { user: IAuthState }) => state.user.error;
 
 // export const getToken = (state: { user: IAuthState }) => state.user.accessToken;
