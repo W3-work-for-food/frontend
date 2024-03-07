@@ -1,0 +1,16 @@
+.containerLogin {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.loginForm {
+    text-align: center;
+    width: 320px;
+    margin: 0 auto;
+    box-shadow: 0px 4px 6px 0px #B0BEC533, 0px 8px 24px 0px #B0BEC533;
+    padding: 48px;
+    border-radius: 16px;
+}

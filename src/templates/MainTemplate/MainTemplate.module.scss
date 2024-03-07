@@ -1,0 +1,10 @@
+.mainTemplate {
+  display: grid;
+  grid-template-columns: 208px 1fr;
+  grid-template-areas:
+    "header header"
+    ". controls"
+    "navbar content";
+  grid-template-rows: auto;
+  gap: 0;
+}

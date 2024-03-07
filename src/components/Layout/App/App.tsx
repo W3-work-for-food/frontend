@@ -1,40 +1,46 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from '@pages/Home';
 import NotFound from '@pages/NotFound';
-import Header from '@components/Layout/Header/Header';
-import Menu from '@components/Layout/Menu/Menu';
-import React, { FC } from 'react';
-import styles from './App.module.scss';
+import Login from '@pages/Login/Login';
+import { useEffect } from 'react';
+import Logout from '@/pages/Logout';
+import Template from '@templates/Template/Template';
+import { useAppDispatch, useAppSelector } from '@services/typeHooks';
+import { RootState } from '@services/redux/store';
+import { getProfileUser, logoutUser } from '@services/redux/slices/auth/auth';
 
 const App = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+  const dispatch = useAppDispatch();
+  const isLoading = useAppSelector((state: RootState) => state.user.isLoading);
+  const isLoggedIn = useAppSelector(
+    (state: RootState) => state.user.isLoggedIn
   );
-};
+  const access = localStorage.getItem('accessToken') ?? '';
 
-interface TemplateProps {
-  children: React.ReactNode;
-}
+  useEffect(() => {
+    if (access.length !== 0) {
+      dispatch(getProfileUser({ access }));
+    } else {
+      dispatch(logoutUser({ access }));
+    }
+  }, [access, dispatch]);
 
-const Template: FC<TemplateProps> = ({ children }) => {
   return (
-    <div className={styles.template}>
-      <Header />
-      <Menu />
-      {children}
-    </div>
+    <Template isLoading={isLoading} isLoggedIn={isLoggedIn}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Template>
   );
 };
 
 const WrappedApp = () => {
   return (
     <BrowserRouter>
-      <Template>
-        <App />
-      </Template>
+      <App />
     </BrowserRouter>
   );
 };
