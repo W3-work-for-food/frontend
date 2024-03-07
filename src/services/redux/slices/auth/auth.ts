@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { login, logout, getuser } from './authAPI';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { getuser, login, logout } from './authAPI';
 
 export interface IUser {
   id: number;
@@ -38,7 +38,7 @@ export const logoutUser = createAsyncThunk(
     { fulfillWithValue, rejectWithValue }
   ) => {
     try {
-      const response = await logout(payload.access);
+      const [response] = await Promise.all([logout(payload.access)]);
       return fulfillWithValue(response);
     } catch (error: unknown) {
       return rejectWithValue({ error: 'Failed to logout' }); // Возвращаем объект с ошибкой
@@ -116,7 +116,7 @@ const authSlice = createSlice({
       })
       .addCase(logoutUser.fulfilled, (state) => {
         localStorage.removeItem('accessToken');
-        const newState = {
+        return {
           ...state,
           isLoading: false,
           isLoggedIn: false,
@@ -129,7 +129,6 @@ const authSlice = createSlice({
           accessToken: '',
           error: '',
         };
-        return newState;
       })
       .addCase(logoutUser.rejected, (state, action) => {
         localStorage.removeItem('accessToken');
@@ -172,15 +171,4 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
-
-export const selectUser = (state: { user: IAuthState }) => state.user;
-
-export const selectLoggedIn = (state: { isLoggedIn: IAuthState }) =>
-  state.isLoggedIn;
-
-export const selectLoading = (state: { isLoading: IAuthState }) =>
-  state.isLoading;
-
 export const selectError = (state: { user: IAuthState }) => state.user.error;
-
-// export const getToken = (state: { user: IAuthState }) => state.user.accessToken;

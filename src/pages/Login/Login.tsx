@@ -1,7 +1,6 @@
-import Login from '@/components/Layout/Forms/Login/Login';
+import Login from '@components/Layout/Forms/Login/Login';
+import { FormContainer } from '@components/ui/Form/Elements';
 import styles from './Login.module.scss';
-
-import { FormContainer } from '@/components/ui/Form/Elements';
 
 const LoginPage = () => {
   return (

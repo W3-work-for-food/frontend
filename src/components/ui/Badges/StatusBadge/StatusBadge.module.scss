@@ -1,0 +1,24 @@
+@import "@styles/global";
+
+.status{
+  padding: 6px 12px;
+  border-radius: 16px;
+  @include Body1($Medium);
+  display: inline-block;
+}
+
+.green {
+  @include theme($lightGreenTag, $greenTag);
+}
+
+.orange {
+  @include theme($lightOrangeTag, $orangeTag);
+}
+
+.rose {
+  @include theme($lightRoseTag, $roseTag);
+}
+
+.blue {
+  @include theme($lightBlueTag, $blueTag);
+}

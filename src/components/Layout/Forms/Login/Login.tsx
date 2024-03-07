@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -36,10 +36,6 @@ const Login = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const error = useSelector(selectError);
-
-  useEffect(() => {
-    // console.log(error);
-  }, [error]); // Подписываемся на изменения error
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -158,13 +154,23 @@ const Login = () => {
           defaultValue={passwordС}
           render={(props) => (
             <DefaultOutlinedInput
+              style={{ position: 'relative', paddingRight: '0' }}
               value={props.field.value}
               fullWidth
               placeholder="Введите пароль"
               type={showPassword ? 'text' : 'password'}
               endAdornment={
-                <InputAdornment position="end">
+                <InputAdornment
+                  style={{
+                    position: 'absolute',
+                    right: '0',
+                  }}
+                  position="end"
+                >
                   <IconButton
+                    style={{
+                      marginRight: '0',
+                    }}
                     aria-label="toggle password visibility"
                     onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
