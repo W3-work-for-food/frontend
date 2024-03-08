@@ -32,4 +32,3 @@ export const fetchDataAuth = async (
   });
   return checkRes(res);
 };
-
