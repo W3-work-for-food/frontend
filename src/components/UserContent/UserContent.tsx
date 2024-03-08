@@ -3,10 +3,10 @@ import TabsMenu, { TabsVariants } from '@components/TabsMenu/TabsMenu';
 import { IconButton } from '@components/ui/Buttons/Buttons';
 import Edit from '@icons/Edit';
 import * as React from 'react';
-import styles from './UserContent.module.scss';
 import CommonInformation from '@components/UserContent/CommonInformation/CommonInformation';
 import LoyaltyProgram from '@components/UserContent/LoyaltyProgram/LoyaltyProgram';
 import PostedContent from '@components/UserContent/PostedContent/PostedContent';
+import styles from './UserContent.module.scss';
 
 const UserContent = () => {
   const [value, setValue] = React.useState(0);
@@ -16,13 +16,12 @@ const UserContent = () => {
 
   let UserData;
   if (value === 0) {
-    UserData = <CommonInformation />
+    UserData = <CommonInformation />;
   } else if (value === 1) {
-    UserData = <PostedContent />
+    UserData = <PostedContent />;
   } else {
-    UserData = <LoyaltyProgram />
+    UserData = <LoyaltyProgram />;
   }
-
 
   return (
     <Box className={styles.userContent} component="div">
