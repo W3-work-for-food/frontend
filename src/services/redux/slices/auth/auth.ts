@@ -17,7 +17,7 @@ interface IAuthState {
 }
 
 export const loginUser = createAsyncThunk(
-  '@@auth/login',
+    '@@auth/login',
   async (
     payload: { email: string; password: string },
     { fulfillWithValue, rejectWithValue }
