@@ -150,7 +150,7 @@ const authSlice = createSlice({
           ...state,
           isLoading: false,
           isLoggedIn: true,
-          user: action.payload[0],
+          user: action.payload,
           error: '',
         };
       })

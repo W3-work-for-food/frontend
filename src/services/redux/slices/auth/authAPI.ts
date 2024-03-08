@@ -5,6 +5,7 @@ const fetchData = (url: string, data: object) => {
   return fetch(url, {
     method: 'POST',
     headers: {
+      Accept: 'application/json',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(data),
@@ -19,6 +20,7 @@ const fetchDataAuth = (
   return fetch(url, {
     method,
     headers: {
+      Accept: 'application/json',
       'Content-Type': 'application/json',
       Authorization: `Token ${data.access}`,
     },
