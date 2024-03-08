@@ -4,29 +4,28 @@ import { Box } from '@mui/material';
 
 interface ContentProps {
   children: React.ReactNode;
+  className?: string;
 }
 
-const Content: FC<ContentProps> = ({ children }) => {
+const Content: FC<ContentProps> = ({ children, className }) => {
   return (
     <Box
       style={{
         gridArea: 'content',
-        padding: '0 32px 32px 0',
+        margin: '0 32px 32px 0',
+        borderRadius: '16px',
+        backgroundColor: vars.globalWhite,
       }}
+      className={className}
       component="div"
     >
-      <Box
-        style={{
-          borderRadius: '16px',
-          backgroundColor: vars.globalWhite,
-          padding: '32px 32px 16px',
-        }}
-        component="div"
-      >
-        {children}
-      </Box>
+      {children}
     </Box>
   );
+};
+
+Content.defaultProps = {
+  className: '',
 };
 
 export default Content;
