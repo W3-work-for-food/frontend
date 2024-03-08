@@ -11,10 +11,6 @@ export enum TabsVariants {
   AMBASSADOR_PAGE = 'AmbassadorPage',
 }
 
-interface TabsMenuProps {
-  variant: TabsVariants.NOTIFICATIONS | TabsVariants.AMBASSADOR_PAGE;
-}
-
 const StyledTab = styled(Tab)(() => ({
   '&': {
     color: `${vars.subtitlesColor}`,
@@ -43,21 +39,40 @@ const CustomTabs = styled(Tabs)(() => ({
   },
 }));
 
-const TabsMenu: React.FC<TabsMenuProps> = ({ variant }) => {
-  const [value, setValue] = React.useState(0);
-  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
+interface TabsMenuProps {
+  variant: TabsVariants.NOTIFICATIONS | TabsVariants.AMBASSADOR_PAGE;
+  value: number;
+  onChange: (event: React.SyntheticEvent, newValue: number) => void;
+}
 
-  const tabLabels =
-    variant === TabsVariants.NOTIFICATIONS
-      ? ['Прочитанные', 'Непрочитанные']
-      : ['Общая информация', 'Размещенный контент', 'Программа лояльности'];
+enum NotificationsTabs {
+  Read = 'Прочитанные',
+  Unread = 'Непрочитанные'
+}
+
+enum AmbassadorPageTabs {
+  GeneralInformation = 'Общая информация',
+  PostedContent = 'Размещенный контент',
+  LoyaltyProgram = 'Программа лояльности'
+}
+
+const TabsMenu: React.FC<TabsMenuProps> = ({ variant, value, onChange }) => {
+  let tabLabels: string[] = [];
+
+  if (variant === TabsVariants.NOTIFICATIONS) {
+    tabLabels = [NotificationsTabs.Read, NotificationsTabs.Unread];
+  } else if (variant === TabsVariants.AMBASSADOR_PAGE) {
+    tabLabels = [
+      AmbassadorPageTabs.GeneralInformation,
+      AmbassadorPageTabs.PostedContent,
+      AmbassadorPageTabs.LoyaltyProgram,
+    ];
+  }
 
   return (
     <Box style={{ height: '32px' }}>
       <CustomTabs
-        onChange={handleChange}
+        onChange={onChange}
         value={value}
         aria-label="Menu tabs"
         TabIndicatorProps={{
