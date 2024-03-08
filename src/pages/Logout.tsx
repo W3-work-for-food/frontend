@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '@/services/typeHooks';
 import { logoutUser } from '@/services/redux/slices/auth/auth';
-import { ROUTE_LOGIN } from '@/utils/constants';
+import { ROUTE_LOGIN } from '@utils/constants/routes';
 
 const LogoutPage = () => {
   const dispatch = useAppDispatch();

@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router-dom';
-import { ROUTE_HOME, ROUTE_LOGIN } from '@/utils/constants';
+import { ROUTE_HOME, ROUTE_LOGIN } from '@utils/constants/routes';
 
 const RequireAuth = ({
   children,

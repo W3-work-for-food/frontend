@@ -1,6 +1,7 @@
 import { Box } from '@mui/material';
 import { FC } from 'react';
-import Statuses from '@constants/statuses';
+import { Statuses } from '@utils/constants/badges';
+import { AmbassadorStatus } from '@utils/types/ambassadorTypes';
 import styles from './StatusBadge.module.scss';
 
 interface StatusBadgeProps {
@@ -9,19 +10,24 @@ interface StatusBadgeProps {
 
 const StatusBadge: FC<StatusBadgeProps> = ({ status }) => {
   let statusColor;
-  if (status === Statuses.ACTIVE) {
+  let statusLabel;
+  if (status === AmbassadorStatus.Active) {
+    statusLabel = Statuses.ACTIVE;
     statusColor = styles.green;
-  } else if (status === Statuses.PAUSED) {
+  } else if (status === AmbassadorStatus.Paused) {
+    statusLabel = Statuses.PAUSED;
     statusColor = styles.orange;
-  } else if (status === Statuses.NOT_AMBASSADOR) {
+  } else if (status === AmbassadorStatus.NonAmbassador) {
+    statusLabel = Statuses.NOT_AMBASSADOR;
     statusColor = styles.rose;
   } else {
+    statusLabel = Statuses.PENDING;
     statusColor = styles.blue;
   }
 
   return (
     <Box component="div" className={`${statusColor} ${styles.status}`}>
-      {status}
+      {statusLabel}
     </Box>
   );
 };

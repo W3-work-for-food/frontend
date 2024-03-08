@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/Form/Elements';
 import { useAppSelector } from '@/services/typeHooks';
 import { RootState } from '@/services/redux/store';
-import { ROUTE_LOGOUT } from '@/utils/constants';
+import { ROUTE_LOGOUT } from '@utils/constants/routes';
 
 const Header = () => {
   const user = useAppSelector((state: RootState) => state.user.user);

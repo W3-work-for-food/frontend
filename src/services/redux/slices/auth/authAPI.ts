@@ -1,54 +1,12 @@
-import checkRes from '@/utils/fetch';
-import { GET_USER_URL, LOGIN_URL } from '@/utils/constants';
-
-const fetchData = (url: string, data: object) => {
-  return fetch(url, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  }).then((res) => checkRes(res));
-};
-
-const fetchDataAuth = (
-  url: string,
-  data: { access: string },
-  method = 'GET'
-) => {
-  return fetch(url, {
-    method,
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      Authorization: `Token ${data.access}`,
-    },
-  }).then((res) => checkRes(res));
-};
-
-// const fetchDataAuthLogout = (
-//   url: string,
-//   data: { access: string },
-//   method = 'POST'
-// ) => {
-//   return fetch(url, {
-//     method,
-//     headers: {
-//       'Content-Type': 'application/json',
-//       Authorization: `Token ${data.access}`,
-//     },
-//     body: JSON.stringify({ data }),
-//   }).then((res) => checkRes(res));
-// };
+import { fetchData, fetchDataAuth } from '@/utils/fetch';
+import { GET_USER_URL, LOGIN_URL } from '@utils/constants/routes';
 
 export const login = (email: string, password: string) => {
   return fetchData(`${LOGIN_URL}`, { email, password });
 };
 
 export const logout = (access: string) => {
-  if (access !== '') return true;
-  return false;
+  return access !== '';
 };
 
 export const getuser = (access: string) => {
