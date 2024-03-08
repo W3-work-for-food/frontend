@@ -1,5 +1,5 @@
 import { GridColDef } from '@mui/x-data-grid';
-import { notificationPageTableColumns } from '@utils/constants/tableColumns';
+import { notificationPageTableColumns, postedContentColumns } from '@utils/constants/tableColumns';
 import { FC } from 'react';
 import MainCheckbox from '@components/ui/CheckBoxes/CheckBoxes';
 import styles from './Table.module.scss';
@@ -45,7 +45,7 @@ const Table: FC<TableProps> = ({ columns, rows, customClass }) => {
   return (
     <div
       style={{
-        height: 580,
+        height: columns === postedContentColumns ? 436 : 580,
         width: '100%',
         padding: '32px 32px 16px',
         boxSizing: 'border-box',
@@ -74,6 +74,6 @@ const Table: FC<TableProps> = ({ columns, rows, customClass }) => {
 
 Table.defaultProps = {
   customClass: '',
-}
+};
 
 export default Table;

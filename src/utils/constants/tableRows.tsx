@@ -173,5 +173,5 @@ export const postedContentRows = [
     date: '18.02.2025',
     link: 'https://air.example.com/berry/advertisement?berry=act&bite=aunt',
     guide: false,
-  }
-]
+  },
+];

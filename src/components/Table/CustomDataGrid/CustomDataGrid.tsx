@@ -1,7 +1,10 @@
 import { styled } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import vars from '@styles/_export.module.scss';
-import { notificationPageTableColumns } from '@utils/constants/tableColumns';
+import {
+  notificationPageTableColumns,
+  postedContentColumns,
+} from '@utils/constants/tableColumns';
 import { FC } from 'react';
 import styles from '@/components/Table/Table.module.scss';
 
@@ -41,6 +44,9 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
   '.MuiDataGrid-main': {
     width: '100%',
     maxHeight: '496px',
+    ...(columns === postedContentColumns && {
+      maxHeight: '436px !important',
+    }),
   },
   '.MuiDataGrid-columnHeaders': {
     fontFamily: 'YS',
@@ -52,10 +58,10 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
     backgroundColor: vars.hoverFiledColor,
     borderBottom: `1px solid ${vars.defaultFiledColor}`,
     color: vars.subtitlesColor,
-  },
-  '.MuiDataGrid-columnHeadersInner': {
-    maxHeight: '48px !important',
-    minHeight: '48px !important',
+    ...(columns === postedContentColumns && {
+      maxHeight: '44px !important',
+      minHeight: '44px !important',
+    }),
   },
   '.MuiDataGrid-columnHeader': {
     textAlign: 'start',
@@ -67,6 +73,11 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
     '&:focus': {
       outline: 'none',
     },
+    ...(columns === postedContentColumns && {
+      height: '44px !important',
+      maxHeight: '44px !important',
+      minHeight: '44px !important',
+    }),
     ...(columns === notificationPageTableColumns && {
       '&:first-child .MuiDataGrid-columnHeaderTitleContainerContent': {
         justifyContent: 'center',
@@ -97,12 +108,41 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
     '&.Mui-selected': {
       backgroundColor: vars.screensBgColor,
     },
+    ...(columns === postedContentColumns && {
+      maxHeight: '48px !important',
+      minHeight: '48px !important',
+    }),
   },
+  ...(columns === postedContentColumns && {
+    '.MuiDataGrid-cell[data-field="guide"]': {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    [`.MuiDataGrid-cell[data-colindex="${postedContentColumns.length - 1}"]`]: {
+      justifyContent: 'center',
+      padding: '0 !important',
+    },
+    '.MuiDataGrid-cell[data-colindex="0"]': {
+      color: vars.mainTextColor,
+    },
+    '.MuiDataGrid-cell--withRenderer': {
+      '&:focus-within': {
+        outline: 'none',
+      },
+    },
+  }),
   '.MuiDataGrid-columnHeaderCheckbox': {
     height: '48px !important',
     width: '48px !important',
     maxWidth: '48px !important',
     minWidth: '48px !important',
+    ...(columns === postedContentColumns && {
+      justifyContent: 'center',
+      height: '44px !important',
+      maxWidth: '44px !important',
+      minWidth: '44px !important',
+    }),
   },
   '.MuiDataGrid-cellCheckbox': {
     padding: '0 !important',
@@ -110,10 +150,10 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
     minHeight: '48px !important',
     maxWidth: '48px !important',
     minWidth: '48px !important',
-
-    '&:focus-within': {
-      outline: 'none',
-    },
+    ...(columns === postedContentColumns && {
+      maxHeight: '48px !important',
+      minHeight: '48px !important',
+    }),
   },
   '.MuiDataGrid-cell': {
     padding: '0 0 0 12px',
@@ -124,6 +164,10 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
     '&:focus': {
       outline: 'none',
     },
+    ...(columns === postedContentColumns && {
+      maxHeight: '48px !important',
+      minHeight: '48px !important',
+    }),
   },
   '.MuiCheckbox-root': {
     padding: '0',
@@ -148,4 +192,4 @@ const CustomDataGridFooter: FC<CustomDataGridFooterProps> = ({ count }) => (
   </div>
 );
 
-export { CustomDataGrid, CustomDataGridFooter }
+export { CustomDataGrid, CustomDataGridFooter };

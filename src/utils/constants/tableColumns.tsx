@@ -116,7 +116,7 @@ export const postedContentColumns: GridColDef[] = [
     headerName: 'Дата добавления',
     width: 160,
     renderCell: (params) => {
-      return <span className={styles.time}>{params.row.date}</span>;
+      return <span>{params.row.date}</span>;
     },
   },
   {
@@ -124,7 +124,9 @@ export const postedContentColumns: GridColDef[] = [
     headerName: 'Ссылка на контент',
     width: 558,
     renderCell: (params) => (
-      <CustomLink url={params.row.link} size="m">{params.row.link}</CustomLink>
+      <CustomLink url={params.row.link} size="m">
+        {params.row.link}
+      </CustomLink>
     ),
   },
   {
@@ -141,4 +143,4 @@ export const postedContentColumns: GridColDef[] = [
     width: 48,
     renderCell: () => <IconButton startIcon={<Bin />} />,
   },
-]
+];
