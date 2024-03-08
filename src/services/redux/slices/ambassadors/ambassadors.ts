@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { IAmbassador } from '@utils/types/ambassadorTypes';
 import { fetchAmbassadors } from '@services/redux/slices/ambassadors/ambassadorsApi';
+
 export const getAmbassadors = createAsyncThunk(
   '@@ambassadors/getAmbassadors',
   async (
@@ -28,7 +29,7 @@ const initialState: IAmbassadorsState = {
 };
 
 const ambassadorsSlice = createSlice({
-  name: "@@ambassadors",
+  name: '@@ambassadors',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -37,25 +38,25 @@ const ambassadorsSlice = createSlice({
         return {
           ...state,
           isLoading: true,
-        }
+        };
       })
       .addCase(getAmbassadors.fulfilled, (state, action) => {
         return {
           ...state,
           isLoading: false,
           ambassadors: action.payload,
-          error: ''
-        }
+          error: '',
+        };
       })
       .addCase(getAmbassadors.rejected, (state, action) => {
         return {
           ...state,
           isLoading: false,
           ambassadors: [],
-          error: action.payload as string
-        }
-      })
-  }
-})
+          error: action.payload as string,
+        };
+      });
+  },
+});
 
 export const ambassadorsReducer = ambassadorsSlice.reducer;
