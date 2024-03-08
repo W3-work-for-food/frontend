@@ -24,9 +24,10 @@ import {
   DefaultInput,
   DefaultOutlinedInput,
 } from '@/components/ui/Inputs/Inputs';
-import { ROUTE_HOME } from '@utils/constants/routes';
+import { ROUTE_AMBASSADORS } from '@utils/constants/routes';
 import SlashedEye from '@/assets/icons/SlashedEye';
 import Eye from '@/assets/icons/Eye';
+import { getAmbassadors } from '@services/redux/slices/ambassadors/ambassadors';
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -75,7 +76,8 @@ const Login = () => {
         // После успешного входа, пользователь будет перенаправлен на главную страницу
         const access = localStorage.getItem('accessToken') ?? '';
         dispatch(getProfileUser({ access }));
-        navigate(ROUTE_HOME);
+        dispatch(getAmbassadors({ access }))
+        navigate(ROUTE_AMBASSADORS);
       }
     });
   };

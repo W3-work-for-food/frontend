@@ -9,6 +9,7 @@ import { RootState } from '@services/redux/store';
 import { getProfileUser, logoutUser } from '@services/redux/slices/auth/auth';
 import Ambassadors from '@pages/Ambassadors';
 import Logout from '@/pages/Logout';
+import { getAmbassadors } from '@services/redux/slices/ambassadors/ambassadors';
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -21,6 +22,7 @@ const App = () => {
   useEffect(() => {
     if (access.length !== 0) {
       dispatch(getProfileUser({ access }));
+      dispatch(getAmbassadors({ access }));
     } else {
       dispatch(logoutUser({ access }));
     }
