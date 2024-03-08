@@ -7,19 +7,20 @@ const menuItems = [
   {
     id: 1,
     name: 'Уведомления',
-    path: '/notifications',
+    path: ['/notifications'],
   },
   {
     id: 2,
     name: 'Aмбассадоры',
-    path: '/ambassadors',
+    path: ['/ambassadors', '/ambassador'],
   },
   {
     id: 3,
     name: 'Дашборд',
-    path: '/dashboard',
+    path: ['/dashboard'],
   },
 ];
+
 const CustomList = styled(MenuList)(() => ({
   '&.MuiList-root': {
     padding: '0',
@@ -51,13 +52,15 @@ const CustomMenuItem = styled(MenuItem)(() => ({
 const Menu = () => {
   const location = useLocation();
 
+  const isActive = (paths: any) => paths.includes(location.pathname);
+
   return (
     <Box className={styles.menu} component="nav">
       <Box className={styles.menu__container} component="div">
         <CustomList className={styles.menu__list}>
           {menuItems.map((item) => (
             <CustomMenuItem
-              className={`${styles.menu__item} ${location.pathname === item.path ? 'active' : ''}`}
+              className={`${styles.menu__item} ${isActive(item.path) ? 'active' : ''}`}
               key={item.id}
               disableRipple
             >

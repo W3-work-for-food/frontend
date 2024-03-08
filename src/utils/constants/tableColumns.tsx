@@ -3,6 +3,9 @@ import styles from '@components/Table/Table.module.scss';
 import Notification from '@components/ui/Badges/Notification/Notification';
 import StatusBadge from '@components/ui/Badges/StatusBadge/StatusBadge';
 import MainCheckbox from '@components/ui/CheckBoxes/CheckBoxes';
+import { IconButton } from '@components/ui/Buttons/Buttons';
+import Bin from '@icons/Bin';
+import CustomLink from '@components/ui/CustomLink/CustomLink';
 
 export const notificationPageTableColumns: GridColDef[] = [
   {
@@ -106,3 +109,36 @@ export const ambassadorColumns: GridColDef[] = [
     ),
   },
 ];
+
+export const postedContentColumns: GridColDef[] = [
+  {
+    field: 'date',
+    headerName: 'Дата добавления',
+    width: 160,
+    renderCell: (params) => {
+      return <span className={styles.time}>{params.row.date}</span>;
+    },
+  },
+  {
+    field: 'contentLink',
+    headerName: 'Ссылка на контент',
+    width: 558,
+    renderCell: (params) => (
+      <CustomLink url={params.row.link} size="m">{params.row.link}</CustomLink>
+    ),
+  },
+  {
+    field: 'guide',
+    headerName: 'По гайду',
+    width: 80,
+    renderCell: (params) => (
+      <MainCheckbox checked={params.row.guide} disabled />
+    ),
+  },
+  {
+    field: 'bin',
+    headerName: '',
+    width: 48,
+    renderCell: () => <IconButton startIcon={<Bin />} />,
+  },
+]

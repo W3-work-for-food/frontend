@@ -160,3 +160,18 @@ export const ambassadorRows = [
     guide: true,
   },
 ];
+
+export const postedContentRows = [
+  {
+    id: 0,
+    date: '18.02.2024',
+    link: 'https://air.example.com/berry/advertisement?berry=act&bite=aunt',
+    guide: true,
+  },
+  {
+    id: 1,
+    date: '18.02.2025',
+    link: 'https://air.example.com/berry/advertisement?berry=act&bite=aunt',
+    guide: false,
+  }
+]

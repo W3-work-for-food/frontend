@@ -1,0 +1,9 @@
+@import "@styles/global";
+
+.postedContent{
+  @include size(100%, 100%);
+
+  .postedContent__table{
+    padding: 0 !important;
+  }
+}

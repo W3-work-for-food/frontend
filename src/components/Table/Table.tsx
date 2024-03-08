@@ -28,12 +28,20 @@ interface NotificationRow {
   action: string;
 }
 
-interface TableProps {
-  columns: GridColDef[];
-  rows: AmbassadorRow[] | NotificationRow[];
+interface PostedContentRow {
+  id: number;
+  date: string;
+  link: string;
+  guide: boolean;
 }
 
-const Table: FC<TableProps> = ({ columns, rows }) => {
+interface TableProps {
+  columns: GridColDef[];
+  rows: AmbassadorRow[] | NotificationRow[] | PostedContentRow[];
+  customClass?: string;
+}
+
+const Table: FC<TableProps> = ({ columns, rows, customClass }) => {
   return (
     <div
       style={{
@@ -42,6 +50,7 @@ const Table: FC<TableProps> = ({ columns, rows }) => {
         padding: '32px 32px 16px',
         boxSizing: 'border-box',
       }}
+      className={customClass}
     >
       <CustomDataGrid
         className={styles.table}
@@ -62,5 +71,9 @@ const Table: FC<TableProps> = ({ columns, rows }) => {
     </div>
   );
 };
+
+Table.defaultProps = {
+  customClass: '',
+}
 
 export default Table;
