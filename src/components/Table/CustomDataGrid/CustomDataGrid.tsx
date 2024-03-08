@@ -1,7 +1,7 @@
 import { styled } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import vars from '@styles/_export.module.scss';
-import { notificationPageTableColumns } from '@constants/tableColumns';
+import { notificationPageTableColumns } from '@utils/constants/tableColumns';
 import { FC } from 'react';
 import styles from '@/components/Table/Table.module.scss';
 

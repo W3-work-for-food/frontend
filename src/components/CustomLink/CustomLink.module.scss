@@ -1,0 +1,11 @@
+@import "@styles/global";
+
+.link {
+  &__text_sm {
+    @include LinkSmall;
+  }
+
+  &__text_m {
+    @include LinkMedium;
+  }
+}

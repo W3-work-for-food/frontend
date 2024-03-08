@@ -1,8 +1,8 @@
 import { GridColDef } from '@mui/x-data-grid';
-import styles from '@/components/Table/Table.module.scss';
-import Notification from '@/components/ui/Badges/Notification/Notification';
-import StatusBadge from '@/components/ui/Badges/StatusBadge/StatusBadge';
-import MainCheckbox from '@/components/Layout/CheckBoxes/CheckBoxes';
+import styles from '@components/Table/Table.module.scss';
+import Notification from '@components/ui/Badges/Notification/Notification';
+import StatusBadge from '@components/ui/Badges/StatusBadge/StatusBadge';
+import MainCheckbox from '@components/ui/CheckBoxes/CheckBoxes';
 
 export const notificationPageTableColumns: GridColDef[] = [
   {

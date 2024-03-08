@@ -1,5 +1,5 @@
-import { ambassadorColumns } from '@constants/tableColumns';
-import { ambassadorRows } from '@constants/tableRows';
+import { ambassadorColumns } from '@utils/constants/tableColumns';
+import { ambassadorRows } from '@utils/constants/tableRows';
 import Content from '@/components/Layout/Content/Content';
 import Table from '@/components/Table/Table';
 

@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { FC } from 'react';
-import Notifications from '@constants/notifications';
+import { Notifications } from '@utils/constants/badges';
 import styles from './Notification.module.scss';
 
 interface NotificationProps {
