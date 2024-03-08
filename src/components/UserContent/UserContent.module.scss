@@ -1,0 +1,17 @@
+@import "@styles/global";
+
+.userContent{
+  grid-area: common;
+  background-color: $globalWhite;
+  height: 100%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 16px;
+  border-radius: 16px;
+
+  &__heading{
+    @include displaySettings($justify: space-between);
+  }
+}

@@ -35,7 +35,14 @@ interface TableProps {
 
 const Table: FC<TableProps> = ({ columns, rows }) => {
   return (
-    <div style={{ height: 580, width: '100%' }}>
+    <div
+      style={{
+        height: 580,
+        width: '100%',
+        padding: '32px 32px 16px',
+        boxSizing: 'border-box',
+      }}
+    >
       <CustomDataGrid
         className={styles.table}
         rows={rows}

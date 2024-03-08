@@ -1,0 +1,10 @@
+.ambassadorPage{
+  display: grid;
+  background-color: transparent !important;
+  grid-template-columns: 282px 1fr;
+  grid-template-areas:
+    "profile common"
+    "comment common";
+  grid-template-rows: auto;
+  gap: 24px;
+}
