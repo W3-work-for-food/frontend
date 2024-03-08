@@ -1,8 +1,8 @@
 import { GridColDef } from '@mui/x-data-grid';
-import { notificationPageTableColumns } from '@constants/tableColumns';
+import { notificationPageTableColumns } from '@utils/constants/tableColumns';
 import { FC } from 'react';
+import MainCheckbox from '@components/ui/CheckBoxes/CheckBoxes';
 import styles from './Table.module.scss';
-import MainCheckbox from '@/components/Layout/CheckBoxes/CheckBoxes';
 import {
   CustomDataGrid,
   CustomDataGridFooter,

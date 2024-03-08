@@ -1,5 +1,4 @@
-import Notifications from '@constants/notifications';
-import Statuses from '@constants/statuses';
+import { Statuses, Notifications } from '@utils/constants/badges';
 
 export const notificationsRows = [
   {

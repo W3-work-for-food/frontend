@@ -1,0 +1,14 @@
+@import "@styles/global";
+
+.page {
+  opacity: 1;
+  width: 100%;
+  min-width: 1024px;
+}
+
+.authPage {
+  opacity: 1;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}

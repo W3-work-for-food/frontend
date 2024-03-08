@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { FC } from 'react';
-import Statuses from '@constants/statuses';
+import { Statuses } from '@utils/constants/badges';
 import styles from './StatusBadge.module.scss';
 
 interface StatusBadgeProps {
