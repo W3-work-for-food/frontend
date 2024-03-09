@@ -1,6 +1,6 @@
 import { Box, MenuItem, MenuList, styled } from '@mui/material';
 import vars from '@styles/_export.module.scss';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './Menu.module.scss';
 
 const menuItems = [
@@ -12,7 +12,7 @@ const menuItems = [
   {
     id: 2,
     name: 'Aмбассадоры',
-    path: ['/ambassadors', '/ambassador'],
+    path: ['/ambassadors', '/ambassador/:id'],
   },
   {
     id: 3,
@@ -51,7 +51,16 @@ const CustomMenuItem = styled(MenuItem)(() => ({
 
 const Menu = () => {
   const location = useLocation();
-  const isActive = (paths: string[]): boolean => paths.includes(location.pathname);
+  const isActive = (paths: string[]): boolean => {
+    return paths.some((path) => {
+      const isDynamicPath = path.includes(':');
+      if (isDynamicPath) {
+        const basePath = path.split('/:')[0];
+        return location.pathname.startsWith(basePath);
+      }
+      return location.pathname === path;
+    });
+  };
 
   return (
     <Box className={styles.menu} component="nav">
@@ -62,6 +71,9 @@ const Menu = () => {
               className={`${styles.menu__item} ${isActive(item.path) ? 'active' : ''}`}
               key={item.id}
               disableRipple
+              // @ts-ignore
+              component={Link}
+              to={item.id === 2 ? item.path[0] : item.path[0]}
             >
               {item.name}
             </CustomMenuItem>

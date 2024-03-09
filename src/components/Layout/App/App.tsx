@@ -37,7 +37,7 @@ const App = () => {
         <Route path="/logout" element={<Logout />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/ambassadors" element={<Ambassadors />} />
-        <Route path="/ambassador" element={<Ambassador />} />
+        <Route path="/ambassador/:id" element={<Ambassador />} />
       </Routes>
     </Template>
   );

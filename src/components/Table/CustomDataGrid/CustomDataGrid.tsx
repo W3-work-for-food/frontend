@@ -85,6 +85,7 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
     display: 'none',
   },
   '.MuiDataGrid-row': {
+    cursor: 'pointer',
     maxHeight: '55px !important',
     minHeight: '55px !important',
     alignItems: 'center',

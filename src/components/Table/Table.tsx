@@ -1,7 +1,8 @@
-import { GridColDef } from '@mui/x-data-grid';
+import { GridColDef, GridRowParams } from '@mui/x-data-grid';
 import { notificationPageTableColumns } from '@utils/constants/tableColumns';
 import { FC } from 'react';
 import MainCheckbox from '@components/ui/CheckBoxes/CheckBoxes';
+import { useNavigate } from 'react-router-dom';
 import styles from './Table.module.scss';
 import {
   CustomDataGrid,
@@ -34,6 +35,12 @@ interface TableProps {
 }
 
 const Table: FC<TableProps> = ({ columns, rows }) => {
+  const navigate = useNavigate();
+
+  const handleRowClick = (params: GridRowParams) => {
+    navigate(`/ambassador/${params.id}`);
+  };
+
   return (
     <div
       style={{
@@ -47,6 +54,7 @@ const Table: FC<TableProps> = ({ columns, rows }) => {
         className={styles.table}
         rows={rows}
         columns={columns}
+        onRowClick={handleRowClick}
         initialState={{
           pagination: {
             paginationModel: { page: 0 },
