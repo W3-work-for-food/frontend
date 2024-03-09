@@ -10,15 +10,21 @@ import styles from './UserContent.module.scss';
 
 const UserContent = () => {
   const [value, setValue] = React.useState(0);
+  const [isEditing, setIsEditing] = React.useState(false); // Добавлено состояние для режима редактирования
+
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
+  };
+
+  const toggleEdit = () => {
+    setIsEditing(!isEditing);
   };
 
   let UserData;
   if (value === 0) {
     UserData = <CommonInformation />;
   } else if (value === 1) {
-    UserData = <PostedContent />;
+    UserData = <PostedContent isEditing={isEditing} />;
   } else {
     UserData = <LoyaltyProgram />;
   }
@@ -31,7 +37,7 @@ const UserContent = () => {
           onChange={handleChange}
           variant={TabsVariants.AMBASSADOR_PAGE}
         />
-        <IconButton startIcon={<Edit />} />
+        <IconButton startIcon={<Edit />} onClick={toggleEdit} />
       </Box>
       {UserData}
     </Box>

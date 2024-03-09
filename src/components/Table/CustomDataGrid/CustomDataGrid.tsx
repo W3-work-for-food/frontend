@@ -113,25 +113,23 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
       minHeight: '48px !important',
     }),
   },
-  ...(columns === postedContentColumns && {
-    '.MuiDataGrid-cell[data-field="guide_condition"]': {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
+  '.MuiDataGrid-cell[data-field="guide_condition"]': {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  [`.MuiDataGrid-cell[data-colindex="${postedContentColumns.length - 1}"]`]: {
+    justifyContent: 'center',
+    padding: '0 !important',
+  },
+  '.MuiDataGrid-cell[data-colindex="0"]': {
+    color: vars.mainTextColor,
+  },
+  '.MuiDataGrid-cell--withRenderer': {
+    '&:focus-within': {
+      outline: 'none',
     },
-    [`.MuiDataGrid-cell[data-colindex="${postedContentColumns.length - 1}"]`]: {
-      justifyContent: 'center',
-      padding: '0 !important',
-    },
-    '.MuiDataGrid-cell[data-colindex="0"]': {
-      color: vars.mainTextColor,
-    },
-    '.MuiDataGrid-cell--withRenderer': {
-      '&:focus-within': {
-        outline: 'none',
-      },
-    },
-  }),
+  },
   '.MuiDataGrid-columnHeaderCheckbox': {
     height: '48px !important',
     width: '48px !important',

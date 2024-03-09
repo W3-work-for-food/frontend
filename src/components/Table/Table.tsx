@@ -1,47 +1,29 @@
-import { GridColDef } from '@mui/x-data-grid';
-import { notificationPageTableColumns, postedContentColumns } from '@utils/constants/tableColumns';
+import {
+  notificationPageTableColumns,
+  postedContentColumns,
+} from '@utils/constants/tableColumns';
 import { FC } from 'react';
 import MainCheckbox from '@components/ui/CheckBoxes/CheckBoxes';
+import {
+  AmbassadorRow,
+  NotificationRow,
+  PostedContentRow,
+} from '@utils/types/tablesTypes';
+import { GridColDef } from '@mui/x-data-grid';
 import styles from './Table.module.scss';
 import {
   CustomDataGrid,
   CustomDataGridFooter,
 } from './CustomDataGrid/CustomDataGrid';
 
-interface AmbassadorRow {
-  id: number;
-  ambassadorName: string;
-  status: string;
-  telegram: string;
-  promo: string;
-  direction: string;
-  date: string;
-  guide: boolean;
-}
-
-interface NotificationRow {
-  id: number;
-  ambassadorName: string;
-  telegram: string;
-  notificationType: string;
-  dateAndTime: string;
-  action: string;
-}
-
-interface PostedContentRow {
-  id: number;
-  date: string;
-  link: string;
-  guide_condition: boolean;
-}
-
 interface TableProps {
   columns: GridColDef[];
   rows: AmbassadorRow[] | NotificationRow[] | PostedContentRow[];
   customClass?: string;
+  isEditing?: boolean;
 }
 
-const Table: FC<TableProps> = ({ columns, rows, customClass }) => {
+const Table: FC<TableProps> = ({ columns, rows, customClass, isEditing }) => {
   return (
     <div
       style={{
@@ -67,7 +49,6 @@ const Table: FC<TableProps> = ({ columns, rows, customClass }) => {
         checkboxSelection={columns === notificationPageTableColumns}
         slots={{
           baseCheckbox: MainCheckbox,
-          // eslint-disable-next-line react/no-unstable-nested-components
           footer: () => <CustomDataGridFooter count={rows.length} />,
         }}
       />
@@ -77,6 +58,7 @@ const Table: FC<TableProps> = ({ columns, rows, customClass }) => {
 
 Table.defaultProps = {
   customClass: '',
+  isEditing: false,
 };
 
 export default Table;
