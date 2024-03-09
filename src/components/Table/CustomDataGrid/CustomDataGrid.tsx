@@ -114,7 +114,7 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
     }),
   },
   ...(columns === postedContentColumns && {
-    '.MuiDataGrid-cell[data-field="guide"]': {
+    '.MuiDataGrid-cell[data-field="guide_condition"]': {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
