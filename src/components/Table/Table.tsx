@@ -32,7 +32,7 @@ interface PostedContentRow {
   id: number;
   date: string;
   link: string;
-  guide: boolean;
+  guide_condition: boolean;
 }
 
 interface TableProps {
@@ -53,6 +53,9 @@ const Table: FC<TableProps> = ({ columns, rows, customClass }) => {
       className={customClass}
     >
       <CustomDataGrid
+        style={{
+          gap: columns === postedContentColumns ? '26px' : '',
+        }}
         className={styles.table}
         rows={rows}
         columns={columns}

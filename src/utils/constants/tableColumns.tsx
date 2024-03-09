@@ -120,7 +120,7 @@ export const postedContentColumns: GridColDef[] = [
     },
   },
   {
-    field: 'contentLink',
+    field: 'link',
     headerName: 'Ссылка на контент',
     width: 558,
     renderCell: (params) => (
@@ -130,11 +130,11 @@ export const postedContentColumns: GridColDef[] = [
     ),
   },
   {
-    field: 'guide',
+    field: 'guide_condition',
     headerName: 'По гайду',
     width: 80,
     renderCell: (params) => (
-      <MainCheckbox checked={params.row.guide} disabled />
+      <MainCheckbox checked={params.row.guide_condition} disabled />
     ),
   },
   {

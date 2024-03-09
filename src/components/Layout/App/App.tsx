@@ -8,8 +8,8 @@ import { useAppDispatch, useAppSelector } from '@services/typeHooks';
 import { RootState } from '@services/redux/store';
 import { getProfileUser, logoutUser } from '@services/redux/slices/auth/auth';
 import Ambassadors from '@pages/Ambassadors';
-import Logout from '@/pages/Logout';
 import { getAmbassadors } from '@services/redux/slices/ambassadors/ambassadors';
+import Logout from '@/pages/Logout';
 import Ambassador from '@/pages/Ambassador/Ambassador';
 
 const App = () => {
