@@ -6,8 +6,9 @@ import { styled } from '@mui/material/styles';
 import vars from '@styles/_export.module.scss';
 import style from './TabsMenu.module.scss';
 
-interface TabsMenuProps {
-  variant: 'Notifications' | 'AmbassadorPage';
+export enum TabsVariants {
+  NOTIFICATIONS = 'Notifications',
+  AMBASSADOR_PAGE = 'AmbassadorPage',
 }
 
 const StyledTab = styled(Tab)(() => ({
@@ -15,8 +16,7 @@ const StyledTab = styled(Tab)(() => ({
     color: `${vars.subtitlesColor}`,
     textTransform: 'none',
     letterSpacing: '-0.1px',
-    margin: '0 12px',
-    padding: '5px 0 0 0',
+    padding: '0',
   },
   '&:focus': {
     color: `${vars.mainTextColor}`,
@@ -26,21 +26,53 @@ const StyledTab = styled(Tab)(() => ({
   },
 }));
 
-const TabsMenu: React.FC<TabsMenuProps> = ({ variant }) => {
-  const [value, setValue] = React.useState(0);
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
+const CustomTabs = styled(Tabs)(() => ({
+  '.MuiTabs-flexContainer': {
+    gap: '24px',
+  },
+  '&.MuiTabs-root': {
+    minHeight: '32px',
+  },
+  '& .MuiButtonBase-root': {
+    justifyContent: 'space-between',
+    minHeight: '32px',
+  },
+}));
 
-  const tabLabels =
-    variant === 'Notifications'
-      ? ['Прочитанные', 'Непрочитанные']
-      : ['Общая информация', 'Размещенный контент', 'Программа лояльности'];
+interface TabsMenuProps {
+  variant: TabsVariants.NOTIFICATIONS | TabsVariants.AMBASSADOR_PAGE;
+  value: number;
+  onChange: (event: React.SyntheticEvent, newValue: number) => void;
+}
+
+enum NotificationsTabs {
+  Read = 'Прочитанные',
+  Unread = 'Непрочитанные'
+}
+
+enum AmbassadorPageTabs {
+  GeneralInformation = 'Общая информация',
+  PostedContent = 'Размещенный контент',
+  LoyaltyProgram = 'Программа лояльности'
+}
+
+const TabsMenu: React.FC<TabsMenuProps> = ({ variant, value, onChange }) => {
+  let tabLabels: string[] = [];
+
+  if (variant === TabsVariants.NOTIFICATIONS) {
+    tabLabels = [NotificationsTabs.Read, NotificationsTabs.Unread];
+  } else if (variant === TabsVariants.AMBASSADOR_PAGE) {
+    tabLabels = [
+      AmbassadorPageTabs.GeneralInformation,
+      AmbassadorPageTabs.PostedContent,
+      AmbassadorPageTabs.LoyaltyProgram,
+    ];
+  }
 
   return (
-    <Box>
-      <Tabs
-        onChange={handleChange}
+    <Box style={{ height: '32px' }}>
+      <CustomTabs
+        onChange={onChange}
         value={value}
         aria-label="Menu tabs"
         TabIndicatorProps={{
@@ -55,7 +87,7 @@ const TabsMenu: React.FC<TabsMenuProps> = ({ variant }) => {
             disableRipple
           />
         ))}
-      </Tabs>
+      </CustomTabs>
     </Box>
   );
 };

@@ -10,6 +10,7 @@ import { getProfileUser, logoutUser } from '@services/redux/slices/auth/auth';
 import Ambassadors from '@pages/Ambassadors';
 import Logout from '@/pages/Logout';
 import { getAmbassadors } from '@services/redux/slices/ambassadors/ambassadors';
+import Ambassador from '@/pages/Ambassador/Ambassador';
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -36,6 +37,7 @@ const App = () => {
         <Route path="/logout" element={<Logout />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/ambassadors" element={<Ambassadors />} />
+        <Route path="/ambassador/:id" element={<Ambassador />} />
       </Routes>
     </Template>
   );
