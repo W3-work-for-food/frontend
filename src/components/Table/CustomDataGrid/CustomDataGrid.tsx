@@ -40,7 +40,7 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
   },
   '.MuiDataGrid-main': {
     width: '100%',
-    maxHeight: '496px',
+    maxHeight: '440px',
   },
   '.MuiDataGrid-columnHeaders': {
     fontFamily: 'YS',
@@ -68,7 +68,12 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
       outline: 'none',
     },
     ...(columns === notificationPageTableColumns && {
-      '&:first-child .MuiDataGrid-columnHeaderTitleContainerContent': {
+      '&:first-of-type': {
+        padding: '0 !important',
+      },
+    }),
+    ...(columns === notificationPageTableColumns && {
+      '&:first-of-type .MuiDataGrid-columnHeaderTitleContainerContent': {
         justifyContent: 'center',
         width: '100%',
         height: '100%',
@@ -149,4 +154,4 @@ const CustomDataGridFooter: FC<CustomDataGridFooterProps> = ({ count }) => (
   </div>
 );
 
-export { CustomDataGrid, CustomDataGridFooter }
+export { CustomDataGrid, CustomDataGridFooter };

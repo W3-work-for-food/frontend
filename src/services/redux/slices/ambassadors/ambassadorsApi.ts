@@ -6,5 +6,5 @@ export const fetchAmbassadors = (access: string) => {
 };
 
 export const fetchAmbassador = (access: string, id: string) => {
-  return fetchDataAuth(`${GET_AMBASSADORS}/${id}`, { access })
+  return fetchDataAuth(`${GET_AMBASSADORS}/${id}`, { access });
 }

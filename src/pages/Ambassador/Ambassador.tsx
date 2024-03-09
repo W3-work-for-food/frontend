@@ -1,12 +1,12 @@
 import Content from '@components/Layout/Content/Content';
 import UserContent from '@components/UserContent/UserContent';
-import styles from './Ambassador.module.scss';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@services/typeHooks';
 import { getAmbassador } from '@services/redux/slices/ambassadors/ambassadors';
 import { logoutUser } from '@services/redux/slices/auth/auth';
 import { useParams } from 'react-router-dom';
 import { RootState } from '@services/redux/store';
+import styles from './Ambassador.module.scss';
 
 const Ambassador = () => {
   const dispatch = useAppDispatch();
