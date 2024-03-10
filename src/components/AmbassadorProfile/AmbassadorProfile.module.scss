@@ -1,0 +1,44 @@
+@import "@styles/global";
+
+.container {
+  &__name {
+    @include H2($Medium);
+    display: block;
+    width: 60px;
+    margin-bottom: 18px;
+  }
+
+  &__button {
+    all: unset;
+    @include size($sizeIcon, $sizeIcon);
+    cursor: pointer;
+    margin-top: 5px;
+  }
+
+  &__data {
+    color: $subtitlesColor;
+    padding-left: 8px;
+    text-decoration: underline
+  }
+
+  &__caption {
+    padding-top: 11px;
+  }
+
+  &__block {
+    @include size(234px, 227px);
+    padding: 30px 24px 22px;
+    border-radius: 16px;
+    gap: 12px;
+    box-shadow: 1px 1px 2px 0px $shadowCard;
+  }
+
+  &__list {
+    margin-top: 13px;
+  }
+
+  &__header {
+    @include displaySettings(flex, start, space-between);
+  }
+
+}

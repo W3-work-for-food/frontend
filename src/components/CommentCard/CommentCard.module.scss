@@ -1,0 +1,68 @@
+@import "@styles/global";
+
+.container {
+  &__title {
+    @include Body1($Medium);
+  }
+
+  &__button {
+    all: unset;
+    @include size($sizeIcon, $sizeIcon);
+    cursor: pointer;
+  }
+
+  &__form {
+    @include Body2();
+    @include size(229px, 242px);
+    overflow: auto;
+    border: none;
+    outline: none;
+    border-radius: 16px;
+    margin-top: 12px;
+    resize: none;
+  }
+
+  &__form::-webkit-scrollbar-thumb {
+    width: 10px;
+    background: #80818F;
+    border-radius: 15px;
+  }
+
+  &__form::-webkit-scrollbar {
+    background: transparent;
+  }
+
+  &__form:focus::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &__form[disabled] {
+    background-color: $globalWhite;
+    color: $mainTextColor;
+  }
+
+  &__form:focus {
+    @include size(198px, 229px);
+    border: 1px solid $subtitlesColor;
+    background-color: $commentCardBgColor;
+    padding: 8px 22px 8px 12px;
+    color: $mainTextColor;
+  }
+
+  &__form::placeholder {
+    @include Body2();
+  }
+
+  &__block {
+    @include size(234px, 283px);
+    padding: 30px 24px 22px;
+    border-radius: 16px;
+    gap: 12px;
+    box-shadow: 1px 1px 2px 0px $shadowCard;
+  }
+
+  &__header {
+    @include displaySettings(flex, start, space-between);
+  }
+
+}
