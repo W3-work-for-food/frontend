@@ -51,9 +51,9 @@ const initialState: IAmbassadorsState = {
   ambassadors: [],
   ambassador: null,
   curAmbassador: null,
-  isLoading: true,
+  isLoading: false,
   error: null,
-}
+};
 
 const ambassadorsSlice = createSlice({
   name: '@@ambassadors',
