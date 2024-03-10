@@ -16,7 +16,7 @@ To start project in Docker:
 
 ```bash
 docker build -t hackathon-frontend-image .
-docker run -p 3000:3000 -d hackathon-frontend-image
+docker run -p 8001:8001 -d hackathon-frontend-image
 
 страница доступна по адресу
 http://127.0.0.1:3000/
