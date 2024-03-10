@@ -23,6 +23,24 @@ export const DefaultLabel = styled(InputLabel)({
   marginBottom: 4,
 });
 
+export const Caption = styled(InputLabel)({
+  fontSize: vars.fsSecondMain,
+  fontWeight: vars.SemiBold,
+  lineHeight: '20px',
+  fontFamily: [vars.mainFont],
+  marginBottom: 4,
+  color: vars.mainTextColor,
+});
+
+export const TableLabel = styled(InputLabel)({
+  fontSize: vars.fsCaption,
+  fontWeight: vars.Medium,
+  lineHeight: '16px',
+  fontFamily: [vars.mainFont],
+  marginBottom: 4,
+  color: vars.subtitlesColor,
+});
+
 export const SuccessLabel = styled(FormHelperText)({
   fontSize: vars.fsSubTitle,
   lineHeight: vars.fsSubTitle,

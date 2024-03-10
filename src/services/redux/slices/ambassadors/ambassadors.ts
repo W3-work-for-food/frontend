@@ -1,6 +1,9 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { IAmbassador } from '@utils/types/ambassadorTypes';
-import { fetchAmbassador, fetchAmbassadors } from '@services/redux/slices/ambassadors/ambassadorsApi';
+import {
+  fetchAmbassador,
+  fetchAmbassadors,
+} from '@services/redux/slices/ambassadors/ambassadorsApi';
 
 export const getAmbassadors = createAsyncThunk(
   '@@ambassadors/getAmbassadors',
@@ -17,10 +20,14 @@ export const getAmbassadors = createAsyncThunk(
   }
 );
 
+export const pushAmbassador = createAction<string>(
+  '@@ambassadors/pushAmbassador'
+);
+
 export const getAmbassador = createAsyncThunk(
   '@@ambassadors/getAmbassador',
   async (
-    payload: { access: string, id: string },
+    payload: { access: string; id: string },
     { fulfillWithValue, rejectWithValue }
   ) => {
     try {
@@ -30,11 +37,12 @@ export const getAmbassador = createAsyncThunk(
       return rejectWithValue({ error: 'Failed to get ambassador' });
     }
   }
-)
+);
 
 interface IAmbassadorsState {
-  ambassadors: IAmbassador[];
+  ambassadors: IAmbassador[] | null;
   ambassador: IAmbassador | null;
+  curAmbassador: string | null;
   isLoading: boolean;
   error: string | null;
 }
@@ -42,7 +50,8 @@ interface IAmbassadorsState {
 const initialState: IAmbassadorsState = {
   ambassadors: [],
   ambassador: null,
-  isLoading: false,
+  curAmbassador: null,
+  isLoading: true,
   error: null,
 };
 
@@ -75,17 +84,32 @@ const ambassadorsSlice = createSlice({
         };
       })
       .addCase(getAmbassador.pending, (state) => {
-        state.isLoading = true;
+        return {
+          ...state,
+          isLoading: true,
+        };
       })
       .addCase(getAmbassador.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.ambassador = action.payload;
-        state.error = null;
+        return {
+          ...state,
+          isLoading: false,
+          ambassador: action.payload,
+          error: null,
+        };
       })
       .addCase(getAmbassador.rejected, (state, action) => {
-        state.isLoading = false;
-        state.ambassador = null;
-        state.error = action.payload as string;
+        return {
+          ...state,
+          isLoading: false,
+          ambassador: null,
+          error: action.payload as string,
+        };
+      })
+      .addCase(pushAmbassador, (state, action) => {
+        return {
+          ...state,
+          curAmbassador: action.payload,
+        };
       });
   },
 });

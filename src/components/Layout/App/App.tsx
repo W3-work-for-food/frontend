@@ -8,13 +8,22 @@ import { useAppDispatch, useAppSelector } from '@services/typeHooks';
 import { RootState } from '@services/redux/store';
 import { getProfileUser, logoutUser } from '@services/redux/slices/auth/auth';
 import Ambassadors from '@pages/Ambassadors';
+import {
+  getAmbassador,
+  getAmbassadors,
+} from '@services/redux/slices/ambassadors/ambassadors';
+import { getMerch, getMerchBudget } from '@services/redux/slices/merch/merch';
 import Logout from '@/pages/Logout';
-import { getAmbassadors } from '@services/redux/slices/ambassadors/ambassadors';
 import Ambassador from '@/pages/Ambassador/Ambassador';
 
 const App = () => {
   const dispatch = useAppDispatch();
-  const isLoading = useAppSelector((state: RootState) => state.user.isLoading);
+  const curAmbassador = useAppSelector(
+    (state: RootState) => state.ambassadors.curAmbassador
+  );
+  const isLoading = useAppSelector((state: RootState) => {
+    return state.user.isLoading || state.ambassadors.isLoading;
+  });
   const isLoggedIn = useAppSelector(
     (state: RootState) => state.user.isLoggedIn
   );
@@ -28,6 +37,14 @@ const App = () => {
       dispatch(logoutUser({ access }));
     }
   }, [access, dispatch]);
+
+  useEffect(() => {
+    if (curAmbassador && access.length !== 0) {
+      dispatch(getAmbassador({ access, id: curAmbassador }));
+      dispatch(getMerch({ access, id: curAmbassador }));
+      dispatch(getMerchBudget({ access, id: curAmbassador }));
+    }
+  }, [access, curAmbassador, dispatch]);
 
   return (
     <Template isLoading={isLoading} isLoggedIn={isLoggedIn}>
