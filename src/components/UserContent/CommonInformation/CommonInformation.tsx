@@ -63,13 +63,13 @@ const CommonInformation = () => {
         <Grid xs={8}>
           <Item>
             <TableLabel>Образование</TableLabel>
-            <DefaultInput fullWidth value="Финансы и кредит" />
+            <DefaultInput fullWidth value={profile.education} />
           </Item>
         </Grid>
         <Grid xs={8}>
           <Item>
             <TableLabel>Место работы *</TableLabel>
-            <DefaultInput fullWidth value="ИП Алексеев, финансист" />
+            <DefaultInput fullWidth value={profile.job} />
           </Item>
         </Grid>
       </Grid>
@@ -82,13 +82,13 @@ const CommonInformation = () => {
         <Grid xs={4}>
           <Item>
             <TableLabel>Дата добавления</TableLabel>
-            <DefaultInput fullWidth value="10.10.2023" />
+            <DefaultInput fullWidth value={ambassador.pub_date} />
           </Item>
         </Grid>
         <Grid xs={4}>
           <Item>
             <TableLabel>Срок нахождения в сообществе</TableLabel>
-            <DefaultInput fullWidth value="4 месяца" />
+            <DefaultInput fullWidth disabled value="" />
           </Item>
         </Grid>
         <Grid xs={8} />

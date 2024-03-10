@@ -3,13 +3,11 @@ import { notificationPageTableColumns } from '@utils/constants/tableColumns';
 import { FC } from 'react';
 import MainCheckbox from '@components/ui/CheckBoxes/CheckBoxes';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import styles from './Table.module.scss';
 import {
   CustomDataGrid,
   CustomDataGridFooter,
 } from './CustomDataGrid/CustomDataGrid';
-import { pushAmbassador } from '@/services/redux/slices/ambassadors/ambassadors';
 
 interface AmbassadorRow {
   id: number;
@@ -37,11 +35,9 @@ interface TableProps {
 }
 
 const Table: FC<TableProps> = ({ columns, rows }) => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleRowClick = (params: GridRowParams) => {
-    dispatch(pushAmbassador(`${params.id}`));
     navigate(`/ambassador/${params.id}`);
   };
 
