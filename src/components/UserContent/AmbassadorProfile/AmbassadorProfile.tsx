@@ -5,6 +5,7 @@ import ProfileSubmitButton from '@/assets/icons/ProfileSubmitButton';
 import styles from './AmbassadorProfile.module.scss';
 import { RootState } from '@/services/redux/store';
 import { useAppSelector } from '@/services/typeHooks';
+import { IconButton } from '@/components/ui/Buttons/Buttons';
 
 const AmbassadorProfile: React.FC = () => {
   const ambassador = useAppSelector(
@@ -42,7 +43,7 @@ const AmbassadorProfile: React.FC = () => {
       <div className={styles.container__header}>
         <h3 className={styles.container__name}>{ambassador?.name}</h3>
 
-        <button
+        <IconButton
           className={styles.container__button}
           type="button"
           onClick={isEditable ? handleSubmit : handleEdit}
@@ -50,7 +51,7 @@ const AmbassadorProfile: React.FC = () => {
           aria-label="Редактировать комментарий"
         >
           {isEditable ? <ProfileSubmitButton /> : <EditIcon />}
-        </button>
+        </IconButton>
       </div>
       <StatusPicker />
 
