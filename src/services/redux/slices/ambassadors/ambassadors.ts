@@ -75,17 +75,26 @@ const ambassadorsSlice = createSlice({
         };
       })
       .addCase(getAmbassador.pending, (state) => {
-        state.isLoading = true;
+        return {
+          ...state,
+          isLoading: true,
+        };
       })
       .addCase(getAmbassador.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.ambassador = action.payload;
-        state.error = null;
+        return {
+          ...state,
+          isLoading: false,
+          ambassador: action.payload,
+          error: null,
+        };
       })
       .addCase(getAmbassador.rejected, (state, action) => {
-        state.isLoading = false;
-        state.ambassador = null;
-        state.error = action.payload as string;
+        return {
+          ...state,
+          isLoading: false,
+          ambassador: null,
+          error: action.payload as string,
+        };
       });
   },
 });

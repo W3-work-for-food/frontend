@@ -1,3 +1,5 @@
+@import "@styles/global";
+
 .ambassadorPage{
   display: grid;
   background-color: transparent !important;
@@ -7,4 +9,11 @@
     "comment common";
   grid-template-rows: auto;
   gap: 24px;
+}
+
+.controls{
+  grid-area: controls;
+  height: 76px;
+  @include displaySettings($justify: space-between);
+  margin-right: 32px;
 }

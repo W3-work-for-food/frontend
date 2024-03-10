@@ -46,6 +46,9 @@ export const SecondaryButton = styled(Button)({
   borderRadius: vars.borderRadius,
   backgroundColor: vars.secondBtnColor,
   border: `1px solid ${vars.secondBtnColor}`,
+  '.MuiButton-startIcon': {
+    marginRight: '0',
+  },
   '&:hover': {
     backgroundColor: vars.secondHoverBtnColor,
     borderColor: vars.secondHoverBtnBorderColor,

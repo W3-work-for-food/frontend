@@ -1,34 +1,33 @@
 import Content from '@components/Layout/Content/Content';
 import UserContent from '@components/UserContent/UserContent';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { PrimaryButton, SecondaryButton } from '@components/ui/Buttons/Buttons';
+import ArrowLeft from '@icons/ArrowLeft';
 import styles from './Ambassador.module.scss';
-import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '@services/typeHooks';
-import { getAmbassador } from '@services/redux/slices/ambassadors/ambassadors';
-import { logoutUser } from '@services/redux/slices/auth/auth';
-import { useParams } from 'react-router-dom';
-import { RootState } from '@services/redux/store';
 
 const Ambassador = () => {
-  const dispatch = useAppDispatch();
-  const access = localStorage.getItem('accessToken') ?? '';
-  const { id } = useParams();
-
-  useEffect(() => {
-    if (access.length !== 0 && id) {
-      dispatch(getAmbassador({ access, id }));
-    } else {
-      dispatch(logoutUser({ access }));
-    }
-  }, [access, id, dispatch]);
-
-  const ambassador = useAppSelector(
-    (state: RootState) => state.ambassadors.ambassador
-  );
-  console.log(ambassador);
+  const [value, setValue] = useState(0);
+  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
 
   return (
     <>
-      <div style={{ gridArea: 'controls', height: '76px' }} />
+      <div className={styles.controls}>
+        <SecondaryButton
+          component={Link}
+          to="/ambassadors"
+          startIcon={<ArrowLeft />}
+          style={{
+            minWidth: '40px',
+            height: '40px',
+            padding: '0',
+            borderRadius: '12px',
+          }}
+        />
+        {value === 2 && <PrimaryButton>Отправить мерч</PrimaryButton>}
+      </div>
       <Content className={styles.ambassadorPage}>
         <div
           style={{
@@ -44,7 +43,7 @@ const Ambassador = () => {
             height: '332px',
           }}
         />
-        <UserContent />
+        <UserContent value={value} onChange={handleChange} />
       </Content>
     </>
   );

@@ -160,3 +160,18 @@ export const ambassadorRows = [
     guide: true,
   },
 ];
+
+export const merchTableRows = [
+  {
+    id: 1,
+    date: 'Янв, 2024',
+    type: 'Рюкзак, кофе',
+    price: '1 200 руб.',
+  },
+  {
+    id: 2,
+    date: 'Янв, 2025',
+    type: 'Рюкзак, кофе',
+    price: '1 200 руб.',
+  },
+]

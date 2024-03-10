@@ -1,7 +1,10 @@
 import { styled } from '@mui/material';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import vars from '@styles/_export.module.scss';
-import { notificationPageTableColumns } from '@utils/constants/tableColumns';
+import {
+  merchTableColumns,
+  notificationPageTableColumns,
+} from '@utils/constants/tableColumns';
 import { FC } from 'react';
 import styles from '@/components/Table/Table.module.scss';
 
@@ -52,6 +55,10 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
     backgroundColor: vars.hoverFiledColor,
     borderBottom: `1px solid ${vars.defaultFiledColor}`,
     color: vars.subtitlesColor,
+    ...(columns === merchTableColumns && {
+      maxHeight: '44px !important',
+      minHeight: '44px !important',
+    }),
   },
   '.MuiDataGrid-columnHeadersInner': {
     maxHeight: '48px !important',
@@ -90,6 +97,10 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
     minHeight: '55px !important',
     alignItems: 'center',
     borderBottom: `1px solid ${vars.disabledFiledColor}`,
+    ...(columns === merchTableColumns && {
+      maxHeight: '36px !important',
+      minHeight: '36px !important',
+    }),
 
     '&:hover': {
       backgroundColor: vars.screensBgColor,
@@ -104,6 +115,10 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
     width: '48px !important',
     maxWidth: '48px !important',
     minWidth: '48px !important',
+    ...(columns === merchTableColumns && {
+      maxHeight: '36px !important',
+      minHeight: '36px !important',
+    }),
   },
   '.MuiDataGrid-cellCheckbox': {
     padding: '0 !important',
@@ -111,6 +126,10 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
     minHeight: '48px !important',
     maxWidth: '48px !important',
     minWidth: '48px !important',
+    ...(columns === merchTableColumns && {
+      maxHeight: '36px !important',
+      minHeight: '36px !important',
+    }),
 
     '&:focus-within': {
       outline: 'none',
@@ -121,6 +140,11 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
     maxHeight: '56px !important',
     minHeight: '56px !important',
     borderBottom: 'none',
+    ...(columns === merchTableColumns && {
+      padding: '0 0 0 8px',
+      maxHeight: '36px !important',
+      minHeight: '36px !important',
+    }),
 
     '&:focus': {
       outline: 'none',
@@ -132,21 +156,35 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
 }));
 
 interface CustomDataGridFooterProps {
-  count: number;
+  info: number | string;
+  columns: GridColDef[];
 }
 
-const CustomDataGridFooter: FC<CustomDataGridFooterProps> = ({ count }) => (
-  <div
-    style={{
-      alignItems: 'center',
-      display: 'flex',
-      height: '40px',
-      width: '100%',
-    }}
-    className={styles.footer}
-  >
-    Всего: {count}
-  </div>
-);
+const CustomDataGridFooter: FC<CustomDataGridFooterProps> = ({
+  info,
+  columns,
+}) => {
+  const footerText =
+    columns === merchTableColumns
+      ? `Бюджет на мерч: ${info}`
+      : `Всего: ${info}`;
 
-export { CustomDataGrid, CustomDataGridFooter }
+  return (
+    <div
+      style={{
+        marginLeft: columns === merchTableColumns ? '8px' : undefined,
+        alignItems: 'center',
+        display: 'flex',
+        height: '40px',
+        width: '100%',
+      }}
+      className={
+        columns === merchTableColumns ? styles.footerMerch : styles.footer
+      }
+    >
+      {footerText}
+    </div>
+  );
+};
+
+export { CustomDataGrid, CustomDataGridFooter };
