@@ -20,21 +20,15 @@ const CommonInformation = () => {
     { label: 'Мужской', value: 'Мужской' },
     { label: 'Женский', value: 'Женский' },
   ];
-  const itemsProgram = [
-    { label: 'Аналитик данных', value: 10 },
-    { label: 'Разработчик', value: 20 },
-  ];
-  const itemsProfession = [
-    { label: 'Аналитик данных', value: 10 },
-    { label: 'Разработчик', value: 20 },
-  ];
-  const itemsEvents = [
-    { label: 'Выступать на мероприятиях', value: 10 },
-    { label: 'Вести блог', value: 20 },
-    { label: 'Реклама в VK', value: 30 },
-  ];
   const profile = ambassador?.profile;
+  const promocodes = ambassador?.promocodes;
   if (!profile) return null;
+  const activePromocode = promocodes?.find((promo) => promo.is_active);
+  const inactivePromocodes = promocodes
+    ?.filter((promo) => !promo.is_active)
+    .map((promo) => promo.promocode)
+    .join(', ');
+
   return (
     <>
       <Grid container spacing={0} columns={16}>
@@ -97,12 +91,7 @@ const CommonInformation = () => {
             <TableLabel>
               Программа обучения в Практикуме <sup>*</sup>
             </TableLabel>
-            <DefaultSelect
-              label="Выбрать программу обучения"
-              items={itemsProgram}
-              defaultValue=""
-              fullWidth
-            />
+            <DefaultInput fullWidth value={profile.education_path} />
           </Item>
         </Grid>
         <Grid xs={8}>
@@ -110,12 +99,7 @@ const CommonInformation = () => {
             <TableLabel>
               Цель обучения в Практикуме <sup>*</sup>
             </TableLabel>
-            <DefaultSelect
-              label="Получение новой профессии"
-              items={itemsProfession}
-              defaultValue=""
-              fullWidth
-            />
+            <DefaultInput fullWidth value={profile.education_goal} />
           </Item>
         </Grid>
         <Grid xs={8}>
@@ -123,36 +107,31 @@ const CommonInformation = () => {
             <TableLabel>
               Планы в рамках амбассадорства <sup>*</sup>
             </TableLabel>
-            <DefaultSelect
-              label="Выбрать мероприятия"
-              items={itemsEvents}
-              defaultValue=""
-              fullWidth
-            />
+            <DefaultInput fullWidth disabled value="" />
           </Item>
         </Grid>
         <Grid xs={8}>
           <Item>
             <TableLabel>Ссылка на блог</TableLabel>
-            <DefaultInput fullWidth value="" />
+            <DefaultInput fullWidth value={profile.blog_link} />
           </Item>
         </Grid>
         <Grid xs={3}>
           <Item>
             <TableLabel>Действующий промокод</TableLabel>
-            <DefaultInput fullWidth value="ANKIR116" />
+            <DefaultInput fullWidth value={activePromocode} />
           </Item>
         </Grid>
         <Grid xs={5}>
           <Item>
             <TableLabel>Недействующие промокоды</TableLabel>
-            <DefaultInput fullWidth value="" />
+            <DefaultInput fullWidth value={inactivePromocodes} />
           </Item>
         </Grid>
         <Grid xs={8}>
           <Item>
             <TableLabel>Дополнительная информация</TableLabel>
-            <DefaultInput fullWidth value="" />
+            <DefaultInput fullWidth value={profile.additional} />
           </Item>
         </Grid>
       </Grid>
