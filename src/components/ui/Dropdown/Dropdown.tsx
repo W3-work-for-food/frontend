@@ -46,7 +46,7 @@ const DefaultSelect = ({
   onChange?: (value: string | number) => void;
 }) => {
   const [selectedValue, setSelectedValue] = useState<string | number>(
-    defaultValue
+    defaultValue || ''
   );
 
   const handleChange = (event: { target: { value: string | number } }) => {
@@ -106,6 +106,11 @@ DefaultSelect.propTypes = {
     })
   ).isRequired,
   defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};
+
+DefaultSelect.defaultProps = {
+  defaultValue: '',
+  onChange: undefined, // or provide a default function if needed
 };
 
 export default DefaultSelect;

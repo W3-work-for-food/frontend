@@ -10,5 +10,10 @@ export const fetchMerchBudget = (access: string, id: string) => {
 };
 
 export const sendMerch = async (access: string, body: IMerch, id: string) => {
-  return fetchDataAuth(`${GET_AMBASSADORS}/${id}/sentmerch/`, { access }, 'POST', JSON.stringify(body));
+  return fetchDataAuth(
+    `${GET_AMBASSADORS}/${id}/sentmerch/`,
+    { access },
+    'POST',
+    JSON.stringify(body)
+  );
 };

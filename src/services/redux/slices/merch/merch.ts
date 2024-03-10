@@ -58,7 +58,7 @@ export const getMerchBudget = createAsyncThunk(
 );
 
 interface IMerchsState {
-  merch: IMerch | null;
+  merch: IMerch[] | null;
   curMerch: string | null;
   budget: number;
   isLoading: boolean;

@@ -9,6 +9,7 @@ import { format } from 'date-fns';
 import { useAppSelector } from '@services/typeHooks';
 import { MerchRow } from '@utils/types/tableTypes';
 import styles from './LoyaltyProgram.module.scss';
+import { IMerch } from '@/utils/types/merchTypes';
 
 interface LoyaltyProgramProps {
   ambassador: IAmbassador;
@@ -38,13 +39,13 @@ const transformMerchToRow = (purchase: IPurchase): MerchRow[] => {
 };
 
 const LoyaltyProgram: FC<LoyaltyProgramProps> = ({ ambassador }) => {
-  const merchs: IPurchase[] = useAppSelector(
+  const merchs: IMerch[] | null = useAppSelector(
     (state: RootState) => state.merchs.merch
   );
   const budget: number = useAppSelector(
     (state: RootState) => state.merchs.budget
   );
-
+  if (!merchs) return null;
   const merchRows = merchs.flatMap(transformMerchToRow);
 
   return (

@@ -31,5 +31,5 @@ export interface IMerch {
   ambassador: IMerchAmbassador;
   merch: IMerchItem[];
   amount: number;
-  sized_merch: string;
+  sized_merch: string[][];
 }

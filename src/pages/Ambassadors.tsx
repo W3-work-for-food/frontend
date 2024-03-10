@@ -26,7 +26,10 @@ const Ambassadors = () => {
   const ambassadors = useAppSelector(
     (state: RootState) => state.ambassadors.ambassadors
   );
-  const ambassadorRows = ambassadors.map(transformAmbassadorToRow);
+
+  const ambassadorRows = ambassadors
+    ? ambassadors.map(transformAmbassadorToRow)
+    : [];
 
   return (
     <>

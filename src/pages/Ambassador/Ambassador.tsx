@@ -1,7 +1,5 @@
 import Content from '@components/Layout/Content/Content';
 import UserContent from '@components/UserContent/UserContent';
-import AmbassadorProfile from '@/components/UserContent/AmbassadorProfile/AmbassadorProfile';
-import CommentCard from '@/components/UserContent/CommentCard/CommentCard';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { PrimaryButton, SecondaryButton } from '@components/ui/Buttons/Buttons';
@@ -18,6 +16,8 @@ import { IAmbassador } from '@utils/types/ambassadorTypes';
 import { postMerch, pushMerch } from '@services/redux/slices/merch/merch';
 import { IMerch } from '@utils/types/merchTypes';
 import DefaultSelect from '@components/ui/Dropdown/Dropdown';
+import CommentCard from '@/components/UserContent/CommentCard/CommentCard';
+import AmbassadorProfile from '@/components/UserContent/AmbassadorProfile/AmbassadorProfile';
 import styles from './Ambassador.module.scss';
 
 const Ambassador = () => {
@@ -65,41 +65,52 @@ const Ambassador = () => {
     setComment(event.target.value);
   };
 
-  const handleMerchTypeChange = (value: string | number) => {
-    setSelectedMerchType(value);
+  const handleMerchTypeChange = (val: string | number) => {
+    setSelectedMerchType(val.toString());
   };
 
   const handleSubmit = () => {
-    const merchTypeId = currentMerch[0].merch.find(
+    const merchItem = currentMerch[0].merch.find(
       (m) => m.merch_type === selectedMerchType
-    ).id;
+    );
 
-    if (!merchTypeId) {
+    if (!merchItem) {
       console.error('Selected merch type is not found');
       return;
     }
 
     const requestBody = {
+      id: id ? parseInt(id, 10) : 0,
+      date: '123456789', // Add the 'datets' property with a valid value
       user: {
         first_name: user.first_name,
         last_name: user.last_name,
       },
       ambassador: {
+        id: currentAmbassador.id, // Add the 'id' property if it's required
         pub_date: currentAmbassador.pub_date,
         telegram: currentAmbassador.telegram,
         name: currentAmbassador.name,
         status: currentAmbassador.status,
         comment,
         guide_status: currentAmbassador.guide_status,
-        profile: currentAmbassador.profile,
-        address: currentAmbassador.address,
+        profile: currentAmbassador.profile.id, // Assuming 'profile' has an 'id' property
+        address: currentAmbassador.address.id,
       },
-      merch: [merchTypeId],
+      merch: [
+        {
+          id: merchItem.id,
+          merch_type: merchItem.merch_type,
+          category: merchItem.category,
+          price: merchItem.price,
+        },
+      ],
       amount: 12312312,
+      sized_merch: [],
     };
 
     console.log(requestBody);
-    dispatch(postMerch({ access, id: id, body: requestBody }));
+    dispatch(postMerch({ access, id: id || '', body: requestBody }));
   };
 
   const merchItems = currentMerch[0].merch.map((m) => ({
@@ -121,6 +132,7 @@ const Ambassador = () => {
             items={merchItems}
             defaultValue=""
             onChange={handleMerchTypeChange}
+            fullWidth={false}
           />
         </Box>
         <Box
