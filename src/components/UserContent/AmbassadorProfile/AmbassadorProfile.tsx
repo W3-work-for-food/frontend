@@ -1,14 +1,21 @@
 import { useState } from 'react';
 import EditIcon from '@icons/Edit';
-import StatusPicker from '../StatusPicker/StatusPicker';
+import StatusPicker from '../../Layout/StatusPicker/StatusPicker';
 import ProfileSubmitButton from '@/assets/icons/ProfileSubmitButton';
 import styles from './AmbassadorProfile.module.scss';
+import { RootState } from '@/services/redux/store';
+import { useAppSelector } from '@/services/typeHooks';
 
 const AmbassadorProfile: React.FC = () => {
+  const ambassador = useAppSelector(
+    (state: RootState) => state.ambassadors.ambassador
+  );
+  const profile = ambassador?.profile;
+
   const [isEditable, setIsEditable] = useState(false);
-  const [email, setEmail] = useState('kiralex94@gmail.com');
-  const [telegram, setTelegram] = useState('@kirill1194');
-  const [phone, setPhone] = useState('+7-987-654-32-10');
+  const [email, setEmail] = useState(profile?.email ?? '');
+  const [telegram, setTelegram] = useState(ambassador?.telegram ?? '');
+  const [phone, setPhone] = useState(profile?.phone ?? '');
 
   const handleEdit = () => {
     setIsEditable(!isEditable);
@@ -20,11 +27,12 @@ const AmbassadorProfile: React.FC = () => {
       setIsEditable(false);
     }
   };
+  if (!profile) return null;
 
   return (
     <div className={styles.container__block}>
       <div className={styles.container__header}>
-        <h3 className={styles.container__name}>Кирилл Алексеев</h3>
+        <h3 className={styles.container__name}>{ambassador?.name}</h3>
 
         <button
           className={styles.container__button}

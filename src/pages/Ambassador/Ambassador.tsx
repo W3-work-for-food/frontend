@@ -5,8 +5,8 @@ import { useEffect } from 'react';
 import styles from './Ambassador.module.scss';
 import { pushAmbassador } from '@/services/redux/slices/ambassadors/ambassadors';
 import { useAppDispatch } from '@/services/typeHooks';
-import AmbassadorProfile from '@/components/AmbassadorProfile/AmbassadorProfile';
-import CommentCard from '@/components/CommentCard/CommentCard';
+import AmbassadorProfile from '@/components/UserContent/AmbassadorProfile/AmbassadorProfile';
+import CommentCard from '@/components/UserContent/CommentCard/CommentCard';
 
 const Ambassador = () => {
   const { id } = useParams();
