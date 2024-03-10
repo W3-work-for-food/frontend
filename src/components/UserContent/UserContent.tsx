@@ -2,11 +2,11 @@ import { Box } from '@mui/material';
 import CommonInformation from '@components/UserContent/CommonInformation/CommonInformation';
 import LoyaltyProgram from '@components/UserContent/LoyaltyProgram/LoyaltyProgram';
 import PostedContent from '@components/UserContent/PostedContent/PostedContent';
-import styles from './UserContent.module.scss';
 import React, { FC } from 'react';
 import TabsMenu, { TabsVariants } from '@components/TabsMenu/TabsMenu';
-import Edit from '@/assets/icons/Edit';
 import { IconButton } from '@components/ui/Buttons/Buttons';
+import Edit from '@/assets/icons/Edit';
+import styles from './UserContent.module.scss';
 
 interface UserContentProps {
   value: number;

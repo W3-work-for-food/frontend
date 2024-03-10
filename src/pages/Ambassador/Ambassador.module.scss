@@ -17,3 +17,30 @@
   @include displaySettings($justify: space-between);
   margin-right: 32px;
 }
+
+.button{
+  @include Body2($Medium);
+}
+
+.modal{
+  @include H3($Medium);
+  text-align: start;
+
+  &__fields{
+    margin: 32px 0 28px;
+    @include displaySettings($align: start);
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__field{
+    width: 100%;
+  }
+
+  &__input {
+    width: 100%;
+    & input {
+      width: 100% !important;
+    }
+  }
+}
