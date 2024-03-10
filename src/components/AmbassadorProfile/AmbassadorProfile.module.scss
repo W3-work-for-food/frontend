@@ -28,9 +28,11 @@
   &__block {
     @include size(234px, 227px);
     padding: 30px 24px 22px;
-    border-radius: 16px;
+    border-radius: $borderRadius;
+    background-color: $globalWhite;
     gap: 12px;
     box-shadow: 1px 1px 2px 0px $shadowCard;
+    height: auto;
   }
 
   &__list {
