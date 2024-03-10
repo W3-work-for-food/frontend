@@ -1,5 +1,5 @@
-import { fetchData, fetchDataAuth } from '@/utils/fetch';
 import { GET_USER_URL, LOGIN_URL } from '@utils/constants/routes';
+import { fetchData, fetchDataAuth } from '@/utils/fetch';
 
 export const login = (email: string, password: string) => {
   return fetchData(`${LOGIN_URL}`, { email, password });

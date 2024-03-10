@@ -6,11 +6,7 @@ interface LoginTemplateProps {
 }
 
 const LoginTemplate: FC<LoginTemplateProps> = ({ children }) => {
-  return (
-    <div className={styles.template}>
-      {children}
-    </div>
-  );
+  return <div className={styles.template}>{children}</div>;
 };
 
 export default LoginTemplate;

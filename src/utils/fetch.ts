@@ -6,7 +6,7 @@ export const checkRes = (res: Response) => {
 };
 
 export const fetchData = async (url: string, data: object) => {
-  let res = await fetch(url, {
+  const res = await fetch(url, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -22,7 +22,7 @@ export const fetchDataAuth = async (
   data: { access: string },
   method = 'GET'
 ) => {
-  let res = await fetch(url, {
+  const res = await fetch(url, {
     method,
     headers: {
       Accept: 'application/json',

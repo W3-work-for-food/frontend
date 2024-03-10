@@ -18,7 +18,7 @@ const Template: FC<TemplateProps> = ({ children, isLoading, isLoggedIn }) => {
   if (isLoading) {
     return (
       <section className={isLoggedIn ? styles.page : styles.authPage}>
-       <Loader />
+        <Loader />
       </section>
     );
   }
