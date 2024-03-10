@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import EditIcon from '@icons/Edit';
 import StatusPicker from '../../Layout/StatusPicker/StatusPicker';
 import ProfileSubmitButton from '@/assets/icons/ProfileSubmitButton';
@@ -17,13 +17,21 @@ const AmbassadorProfile: React.FC = () => {
   const [telegram, setTelegram] = useState(ambassador?.telegram ?? '');
   const [phone, setPhone] = useState(profile?.phone ?? '');
 
+  useEffect(() => {
+    if (ambassador) {
+      setEmail(profile?.email ?? '');
+      setTelegram(ambassador?.telegram ?? '');
+      setPhone(profile?.phone ?? '');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ambassador]);
+
   const handleEdit = () => {
     setIsEditable(!isEditable);
   };
 
   const handleSubmit = () => {
     if (isEditable) {
-      console.log('отправить форму');
       setIsEditable(false);
     }
   };
