@@ -22,7 +22,7 @@ const CommonInformation = () => {
   ];
   const profile = ambassador?.profile;
   const promocodes = ambassador?.promocodes;
-  if (!profile) return null;
+  if (!profile) return <>No amba</>;
   const activePromocode = promocodes?.find((promo) => promo.is_active);
   const inactivePromocodes = promocodes
     ?.filter((promo) => !promo.is_active)

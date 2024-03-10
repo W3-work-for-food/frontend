@@ -28,7 +28,9 @@ const App = () => {
   const curAmbassador = useAppSelector(
     (state: RootState) => state.ambassadors.curAmbassador
   );
-  const isLoading = useAppSelector((state: RootState) => state.user.isLoading);
+  const isLoading = useAppSelector(
+    (state: RootState) => state.user.isLoading || state.ambassadors.isLoading
+  );
   const isLoggedIn = useAppSelector(
     (state: RootState) => state.user.isLoggedIn
   );

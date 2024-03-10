@@ -47,7 +47,7 @@ const initialState: IAmbassadorsState = {
   ambassadors: [],
   ambassador: null,
   curAmbassador: null,
-  isLoading: false,
+  isLoading: true,
   error: null,
 };
 export const pushAmbassador = createAction<string>(
@@ -107,7 +107,6 @@ const ambassadorsSlice = createSlice({
       .addCase(pushAmbassador, (state, action) => {
         return {
           ...state,
-          ambassador: null,
           curAmbassador: action.payload,
         };
       });

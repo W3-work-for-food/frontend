@@ -71,7 +71,7 @@ const DefaultSelect = ({
         IconComponent={IconComponent}
         displayEmpty
       >
-        <MenuItem value="">{label}</MenuItem>
+        {/* <MenuItem value="">{label}</MenuItem> */}
         {items.map((item) => (
           <MenuItem key={item.value} value={item.value}>
             {item.label}

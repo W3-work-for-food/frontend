@@ -18,7 +18,15 @@
   &__data {
     color: $subtitlesColor;
     padding-left: 8px;
-    text-decoration: underline
+
+    a {
+      color: #80818F;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
   }
 
   &__caption {
@@ -36,7 +44,7 @@
   }
 
   &__list {
-    margin-top: 13px;
+    margin-top: 0px;
   }
 
   &__header {

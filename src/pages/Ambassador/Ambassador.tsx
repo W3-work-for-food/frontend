@@ -7,8 +7,10 @@ import { pushAmbassador } from '@/services/redux/slices/ambassadors/ambassadors'
 import { useAppDispatch } from '@/services/typeHooks';
 import AmbassadorProfile from '@/components/UserContent/AmbassadorProfile/AmbassadorProfile';
 import CommentCard from '@/components/UserContent/CommentCard/CommentCard';
+// import { RootState } from '@/services/redux/store';
 
 const Ambassador = () => {
+  // const ambassadors = useAppSelector((state: RootState) => state.ambassadors);
   const { id } = useParams();
   const dispatch = useAppDispatch();
 
@@ -17,6 +19,8 @@ const Ambassador = () => {
       dispatch(pushAmbassador(id));
     }
   }, [id, dispatch]);
+
+  // if (ambassadors.isLoading || !ambassadors.ambassador) return null;
 
   return (
     <>
