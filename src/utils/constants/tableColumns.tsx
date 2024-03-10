@@ -3,6 +3,7 @@ import styles from '@components/Table/Table.module.scss';
 import Notification from '@components/ui/Badges/Notification/Notification';
 import StatusBadge from '@components/ui/Badges/StatusBadge/StatusBadge';
 import MainCheckbox from '@components/ui/CheckBoxes/CheckBoxes';
+import CustomLink from '@components/ui/CustomLink/CustomLink';
 
 export const notificationPageTableColumns: GridColDef[] = [
   {
@@ -47,6 +48,9 @@ export const notificationPageTableColumns: GridColDef[] = [
     field: 'action',
     headerName: 'Действие',
     width: 320,
+    renderCell: (params) => (
+      <CustomLink url={params.row.url} size="m">{params.row.action}</CustomLink>
+    ),
   },
 ];
 

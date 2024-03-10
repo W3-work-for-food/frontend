@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from '@services/typeHooks';
 import { RootState } from '@services/redux/store';
 import { getProfileUser, logoutUser } from '@services/redux/slices/auth/auth';
 import Ambassadors from '@pages/Ambassadors';
+import Notifications from '@pages/Notifications/Notifications';
 import {
   getAmbassador,
   getAmbassadors,
@@ -53,6 +54,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/notifications" element={<Notifications />} />
         <Route path="/ambassadors" element={<Ambassadors />} />
         <Route path="/ambassador/:id" element={<Ambassador />} />
       </Routes>

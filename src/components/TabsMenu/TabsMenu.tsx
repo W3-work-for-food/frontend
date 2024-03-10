@@ -47,13 +47,13 @@ interface TabsMenuProps {
 
 enum NotificationsTabs {
   Read = 'Прочитанные',
-  Unread = 'Непрочитанные'
+  Unread = 'Непрочитанные',
 }
 
 enum AmbassadorPageTabs {
   GeneralInformation = 'Общая информация',
   PostedContent = 'Размещенный контент',
-  LoyaltyProgram = 'Программа лояльности'
+  LoyaltyProgram = 'Программа лояльности',
 }
 
 const TabsMenu: React.FC<TabsMenuProps> = ({ variant, value, onChange }) => {
