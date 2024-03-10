@@ -37,18 +37,24 @@ const DefaultSelect = ({
   items,
   defaultValue = '',
   fullWidth = true,
+  onChange,
 }: {
   label: string;
   items: Array<{ label: string; value: string | number }>;
   defaultValue: string | null;
   fullWidth: boolean;
+  onChange?: (value: string | number) => void;
 }) => {
   const [selectedValue, setSelectedValue] = useState<string | number>(
     defaultValue || ''
   );
 
   const handleChange = (event: { target: { value: string | number } }) => {
-    setSelectedValue(event.target.value);
+    const { value } = event.target;
+    setSelectedValue(value);
+    if (onChange) {
+      onChange(value);
+    }
   };
 
   const IconComponent = useCallback(
@@ -60,18 +66,27 @@ const DefaultSelect = ({
     <FormControl
       fullWidth={fullWidth ? true : undefined}
       sx={{ m: 0 }}
+      style={{ width: '100%', margin: '0', height: '40px' }}
       variant="filled"
     >
       <Select
         fullWidth={fullWidth ? true : undefined}
         value={selectedValue}
-        label={label}
         onChange={handleChange}
         input={<DefaultDropDown />}
         IconComponent={IconComponent}
         displayEmpty
+        style={{
+          height: '38px',
+          display: 'flex',
+          alignItems: 'center',
+        }}
       >
-        {/* <MenuItem value="">{label}</MenuItem> */}
+        {label && (
+          <MenuItem disabled value="">
+            {label}
+          </MenuItem>
+        )}
         {items.map((item) => (
           <MenuItem key={item.value} value={item.value}>
             {item.label}
@@ -81,26 +96,21 @@ const DefaultSelect = ({
     </FormControl>
   );
 };
-
 DefaultSelect.propTypes = {
   label: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
-      value: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-        // Add other allowed types if necessary
-      ]).isRequired,
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        .isRequired,
     })
   ).isRequired,
+  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};
+
+DefaultSelect.defaultProps = {
+  defaultValue: '',
+  onChange: undefined, // or provide a default function if needed
 };
 
 export default DefaultSelect;
-
-// const items = [
-//   { label: 'Ten', value: 10 },
-//   { label: 'Twenty', value: 20 },
-//   { label: 'Thirty', value: 30 },
-// ];
-// <DefaultSelect label="Выбрать год" items={items} defaultValue="" />;

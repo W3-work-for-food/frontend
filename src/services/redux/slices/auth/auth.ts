@@ -69,7 +69,7 @@ const initialState: IAuthState = {
     last_name: '',
   } as IUser,
   accessToken: '',
-  isLoading: true,
+  isLoading: false,
   isLoggedIn: false,
   error: '',
 };

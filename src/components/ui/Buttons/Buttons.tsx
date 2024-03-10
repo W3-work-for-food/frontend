@@ -1,6 +1,7 @@
 import { styled } from '@mui/material/styles';
-import { Button } from '@mui/material';
+import { Button, ButtonProps } from '@mui/material';
 import vars from '@styles/_export.module.scss';
+import { Link } from 'react-router-dom';
 
 export const PrimaryButton = styled(Button)({
   color: vars.mainTextColor,
@@ -34,7 +35,13 @@ export const PrimaryButton = styled(Button)({
   },
 });
 
-export const SecondaryButton = styled(Button)({
+interface SecondaryButtonProps extends ButtonProps {
+  to?: string;
+}
+
+export const SecondaryButton = styled(({ to, ...props }: SecondaryButtonProps) => (
+  <Button component={to ? Link : 'button'} to={to} {...props} />
+))({
   fontFamily: [vars.mainFont],
   boxShadow: 'none',
   textTransform: 'none',
@@ -46,6 +53,9 @@ export const SecondaryButton = styled(Button)({
   borderRadius: vars.borderRadius,
   backgroundColor: vars.secondBtnColor,
   border: `1px solid ${vars.secondBtnColor}`,
+  '.MuiButton-startIcon': {
+    marginRight: '0',
+  },
   '&:hover': {
     backgroundColor: vars.secondHoverBtnColor,
     borderColor: vars.secondHoverBtnBorderColor,

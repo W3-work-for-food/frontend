@@ -1,0 +1,56 @@
+@import "@styles/global";
+
+.info {
+  background-color: $hoverFiledColor;
+  border-radius: 16px;
+  padding: 28px 28px 0;
+
+  &__title {
+    @include Body1($Medium);
+  }
+
+  &__titleSm {
+    @include Body2($Medium);
+  }
+
+  &__input {
+    width: 100%;
+    input {
+      background-color: $globalWhite !important;
+      width: 100% !important;
+      &:hover {
+        border-color: $defaultInputBgColor !important;
+      }
+    }
+  }
+
+  &__contentSizes {
+    & div{
+      width: 120px;
+    }
+    margin: 24px 0 20px;
+    @include displaySettings($justify: start);
+    gap: 16px;
+  }
+
+  &__contentAddress{
+    @include displaySettings($align: start);
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__field {
+    width: 100%;
+  }
+
+  &__addressFields {
+    @include displaySettings();
+    gap: 12px;
+    flex-direction: column;
+
+    &Row {
+      @include displaySettings();
+      gap: 16px;
+    }
+  }
+}

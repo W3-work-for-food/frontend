@@ -21,7 +21,7 @@ RUN yarn install
 EXPOSE 8001
 
 # Define environment variable
-ENV NODE_ENV=development
+# ENV NODE_ENV=development
 
 # Run the build script using Yarn
 CMD ["yarn", "dev"]
