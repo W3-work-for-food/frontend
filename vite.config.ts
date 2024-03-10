@@ -8,6 +8,7 @@ export default defineConfig({
     port: 8001, // Указываете желаемый порт
     host: '0.0.0.0',
   },
+  base: '/frontend',
   resolve: {
     alias: {
       '@': '/src',
