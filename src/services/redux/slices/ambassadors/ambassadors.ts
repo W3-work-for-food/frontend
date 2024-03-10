@@ -20,6 +20,10 @@ export const getAmbassadors = createAsyncThunk(
   }
 );
 
+export const pushAmbassador = createAction<string>(
+  '@@ambassadors/pushAmbassador'
+);
+
 export const getAmbassador = createAsyncThunk(
   '@@ambassadors/getAmbassador',
   async (
@@ -36,7 +40,7 @@ export const getAmbassador = createAsyncThunk(
 );
 
 interface IAmbassadorsState {
-  ambassadors: IAmbassador[];
+  ambassadors: IAmbassador[] | null;
   ambassador: IAmbassador | null;
   curAmbassador: string | null;
   isLoading: boolean;
@@ -49,10 +53,7 @@ const initialState: IAmbassadorsState = {
   curAmbassador: null,
   isLoading: true,
   error: null,
-};
-export const pushAmbassador = createAction<string>(
-  '@@ambassadors/pushAmbassador'
-);
+}
 
 const ambassadorsSlice = createSlice({
   name: '@@ambassadors',

@@ -3,6 +3,7 @@ import styles from '@components/Table/Table.module.scss';
 import Notification from '@components/ui/Badges/Notification/Notification';
 import StatusBadge from '@components/ui/Badges/StatusBadge/StatusBadge';
 import MainCheckbox from '@components/ui/CheckBoxes/CheckBoxes';
+import CustomLink from '@components/ui/CustomLink/CustomLink';
 
 export const notificationPageTableColumns: GridColDef[] = [
   {
@@ -47,6 +48,9 @@ export const notificationPageTableColumns: GridColDef[] = [
     field: 'action',
     headerName: 'Действие',
     width: 320,
+    renderCell: (params) => (
+      <CustomLink url={params.row.url} size="m">{params.row.action}</CustomLink>
+    ),
   },
 ];
 
@@ -104,5 +108,34 @@ export const ambassadorColumns: GridColDef[] = [
     renderCell: (params) => (
       <MainCheckbox checked={params.row.guide} disabled />
     ),
+  },
+];
+
+export const merchTableColumns: GridColDef[] = [
+  {
+    field: 'date',
+    headerName: 'Дата отправки',
+    width: 136,
+    renderCell: (params) => {
+      return <span className={styles.merch}>{params.row.date}</span>;
+    },
+  },
+  {
+    field: 'merch_type',
+    headerName: 'Тип мерча',
+    width: 104,
+    renderCell: (params) => {
+      return (
+        <span className={styles.merch}>{params.row.merch_type}</span>
+      );
+    },
+  },
+  {
+    field: 'price',
+    headerName: 'Стоимость',
+    width: 104,
+    renderCell: (params) => {
+      return <span className={styles.merch}>{params.row.price}</span>;
+    },
   },
 ];

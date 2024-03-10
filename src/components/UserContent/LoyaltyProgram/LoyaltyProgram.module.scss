@@ -1,0 +1,9 @@
+@import "@styles/global";
+
+.loyaltyProgram{
+  @include size(100%, 100%);
+
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 26px;
+}

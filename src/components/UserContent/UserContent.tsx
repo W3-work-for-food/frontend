@@ -1,26 +1,35 @@
 import { Box } from '@mui/material';
-import TabsMenu, { TabsVariants } from '@components/TabsMenu/TabsMenu';
-import { IconButton } from '@components/ui/Buttons/Buttons';
-import Edit from '@icons/Edit';
-import * as React from 'react';
 import CommonInformation from '@components/UserContent/CommonInformation/CommonInformation';
 import LoyaltyProgram from '@components/UserContent/LoyaltyProgram/LoyaltyProgram';
 import PostedContent from '@components/UserContent/PostedContent/PostedContent';
+import React, { FC } from 'react';
+import TabsMenu, { TabsVariants } from '@components/TabsMenu/TabsMenu';
+import { IconButton } from '@components/ui/Buttons/Buttons';
+import { IAmbassador } from '@utils/types/ambassadorTypes';
+import Edit from '@/assets/icons/Edit';
 import styles from './UserContent.module.scss';
 
-const UserContent = () => {
-  const [value, setValue] = React.useState(0);
-  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
+interface UserContentProps {
+  value: number;
+  onChange: (_event: React.SyntheticEvent, newValue: number) => void;
+  ambassador: IAmbassador;
+}
 
+const UserContent: FC<UserContentProps> = ({ value, onChange, ambassador }) => {
   let UserData;
-  if (value === 0) {
-    UserData = <CommonInformation />;
-  } else if (value === 1) {
-    UserData = <PostedContent />;
-  } else {
-    UserData = <LoyaltyProgram />;
+  switch (value) {
+    case 0:
+      UserData = <CommonInformation />;
+      break;
+    case 1:
+      UserData = <PostedContent />;
+      break;
+    case 2:
+      UserData = <LoyaltyProgram ambassador={ambassador} />;
+      break;
+    default:
+      UserData = <CommonInformation />;
+      break;
   }
 
   return (
@@ -28,10 +37,10 @@ const UserContent = () => {
       <Box className={styles.userContent__heading} component="div">
         <TabsMenu
           value={value}
-          onChange={handleChange}
+          onChange={onChange}
           variant={TabsVariants.AMBASSADOR_PAGE}
         />
-        <IconButton startIcon={<Edit />} />
+        {value !== 2 && <IconButton startIcon={<Edit />} />}
       </Box>
       {UserData}
     </Box>

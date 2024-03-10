@@ -17,20 +17,22 @@ import {
   getAmbassador,
   getAmbassadors,
 } from '@services/redux/slices/ambassadors/ambassadors';
+import { getMerch, getMerchBudget } from '@services/redux/slices/merch/merch';
 import Logout from '@/pages/Logout';
 import Ambassador from '@/pages/Ambassador/Ambassador';
 import RequireAuth from '@/components/ReqAuth';
-import { ROUTE_HOME } from '@/utils/constants';
+import { ROUTE_HOME } from '@/utils/constants/routes';
 import Home from '@/pages/Home';
+import Notifications from '@pages/Notifications/Notifications';
 
 const App = () => {
   const dispatch = useAppDispatch();
   const curAmbassador = useAppSelector(
     (state: RootState) => state.ambassadors.curAmbassador
   );
-  const isLoading = useAppSelector(
-    (state: RootState) => state.user.isLoading || state.ambassadors.isLoading
-  );
+  const isLoading = useAppSelector((state: RootState) => {
+    return state.user.isLoading || state.ambassadors.isLoading;
+  });
   const isLoggedIn = useAppSelector(
     (state: RootState) => state.user.isLoggedIn
   );
@@ -48,6 +50,8 @@ const App = () => {
   useEffect(() => {
     if (curAmbassador && access.length !== 0) {
       dispatch(getAmbassador({ access, id: curAmbassador }));
+      dispatch(getMerch({ access, id: curAmbassador }));
+      dispatch(getMerchBudget({ access, id: curAmbassador }));
     }
   }, [access, curAmbassador, dispatch]);
 
@@ -64,7 +68,7 @@ const App = () => {
         >
           <Route path="/" element={<Navigate to="/ambassadors" />} />
           <Route path="/ambassadors" element={<Ambassadors />} />
-          <Route path="/notifications" element={<Home />} />
+          <Route path="/notifications" element={<Notifications />} />
           <Route path="/dashboard" element={<Home />} />
           <Route path="/ambassador/:id" element={<Ambassador />} />
         </Route>
