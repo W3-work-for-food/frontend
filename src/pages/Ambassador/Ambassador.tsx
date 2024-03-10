@@ -1,5 +1,7 @@
 import Content from '@components/Layout/Content/Content';
 import UserContent from '@components/UserContent/UserContent';
+import AmbassadorProfile from '@/components/UserContent/AmbassadorProfile/AmbassadorProfile';
+import CommentCard from '@/components/UserContent/CommentCard/CommentCard';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { PrimaryButton, SecondaryButton } from '@components/ui/Buttons/Buttons';
@@ -170,20 +172,8 @@ const Ambassador = () => {
         )}
       </div>
       <Content className={styles.ambassadorPage}>
-        <div
-          style={{
-            gridArea: 'profile',
-            backgroundColor: 'white',
-            height: '272px',
-          }}
-        />
-        <div
-          style={{
-            gridArea: 'comment',
-            backgroundColor: 'white',
-            height: '332px',
-          }}
-        />
+        <AmbassadorProfile />
+        <CommentCard />
         <UserContent
           value={value}
           onChange={handleChange}

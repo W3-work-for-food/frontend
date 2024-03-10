@@ -5,6 +5,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Box, IconButton, InputAdornment } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
 import { useSelector } from 'react-redux';
+import { ROUTE_AMBASSADORS } from '@utils/constants/routes';
+import { getAmbassadors } from '@services/redux/slices/ambassadors/ambassadors';
 import loginSchema from '@/utils/validationSchema';
 
 import {
@@ -24,10 +26,8 @@ import {
   DefaultInput,
   DefaultOutlinedInput,
 } from '@/components/ui/Inputs/Inputs';
-import { ROUTE_AMBASSADORS } from '@utils/constants/routes';
 import SlashedEye from '@/assets/icons/SlashedEye';
 import Eye from '@/assets/icons/Eye';
-import { getAmbassadors } from '@services/redux/slices/ambassadors/ambassadors';
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -76,7 +76,7 @@ const Login = () => {
         // После успешного входа, пользователь будет перенаправлен на главную страницу
         const access = localStorage.getItem('accessToken') ?? '';
         dispatch(getProfileUser({ access }));
-        dispatch(getAmbassadors({ access }))
+        dispatch(getAmbassadors({ access }));
         navigate(ROUTE_AMBASSADORS);
       }
     });

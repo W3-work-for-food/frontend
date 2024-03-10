@@ -7,7 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 import PropTypes from 'prop-types'; // Добавим импорт для пропс-валидации
 import { useCallback, useState } from 'react';
 import ArrowDown from '@/assets/icons/ArrowDown';
-import './Dropdowm.scss';
+import './Dropdown.scss';
 
 const DefaultDropDown = styled(InputBase)(({ theme }) => ({
   'label + &': {
@@ -18,8 +18,8 @@ const DefaultDropDown = styled(InputBase)(({ theme }) => ({
     position: 'relative',
     backgroundColor: vars.defaultInputBgColor,
     border: `1px solid ${vars.defaultInputBorderColor}`,
-    fontSize: vars.fsMain,
-    padding: '10px 44px 10px 12px',
+    fontSize: vars.fsSecondMain,
+    padding: '7px 44px 8px 12px',
     fontFamily: [vars.mainFont],
     '&:hover': {
       borderRadius: vars.borderRadius,
@@ -36,11 +36,13 @@ const DefaultSelect = ({
   label,
   items,
   defaultValue = '',
+  fullWidth = true,
   onChange,
 }: {
   label: string;
   items: Array<{ label: string; value: string | number }>;
-  defaultValue?: string | number; // Сделать defaultValue опциональным
+  defaultValue: string | null;
+  fullWidth: boolean;
   onChange?: (value: string | number) => void;
 }) => {
   const [selectedValue, setSelectedValue] = useState<string | number>(
@@ -62,11 +64,13 @@ const DefaultSelect = ({
 
   return (
     <FormControl
+      fullWidth={fullWidth ? true : undefined}
+      sx={{ m: 0 }}
       style={{ width: '100%', margin: '0', height: '40px' }}
-      sx={{ m: 1 }}
       variant="filled"
     >
       <Select
+        fullWidth={fullWidth ? true : undefined}
         value={selectedValue}
         onChange={handleChange}
         input={<DefaultDropDown />}

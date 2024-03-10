@@ -1,0 +1,42 @@
+@import "@styles/global";
+
+.menu {
+
+  &__list {
+    all: unset;
+    @include size(99px, 36px);
+    @include Caption1($Medium);
+    @include theme($lightGreenTag, $greenTag);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+  }
+
+  &__option {
+    @include size(99px, 36px);
+  }
+
+  &_active {
+    background-color: $lightGreenTag;
+    color: $greenTag;
+    border-radius: 16px 16px 0 0;
+  }
+
+  &_notAmbassador {
+    background-color: $lightRoseTag;
+    color: $roseTag;
+  }
+
+  &_pause {
+    background-color: $lightOrangeTag;
+    color: $orangeTag;
+  }
+
+  &_clarification {
+    background-color: $lightBlueTag;
+    color: $blueTag;
+    border-radius: 16px 16px 0 0;
+  }
+
+}

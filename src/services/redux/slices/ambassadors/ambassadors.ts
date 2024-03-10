@@ -53,7 +53,7 @@ const initialState: IAmbassadorsState = {
   curAmbassador: null,
   isLoading: true,
   error: null,
-};
+}
 
 const ambassadorsSlice = createSlice({
   name: '@@ambassadors',
