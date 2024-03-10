@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { notificationsReducer } from '@services/redux/slices/notifications/notifications';
+import { merchReducer } from '@services/redux/slices/merch/merch';
 import { authReducer } from './slices/auth/auth';
 import { ambassadorsReducer } from './slices/ambassadors/ambassadors';
 
@@ -8,6 +9,7 @@ export const store = configureStore({
     user: authReducer,
     ambassadors: ambassadorsReducer,
     notifications: notificationsReducer,
+    merchs: merchReducer,
   },
 });
 

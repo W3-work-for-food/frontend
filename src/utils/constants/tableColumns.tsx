@@ -110,3 +110,32 @@ export const ambassadorColumns: GridColDef[] = [
     ),
   },
 ];
+
+export const merchTableColumns: GridColDef[] = [
+  {
+    field: 'date',
+    headerName: 'Дата отправки',
+    width: 136,
+    renderCell: (params) => {
+      return <span className={styles.merch}>{params.row.date}</span>;
+    },
+  },
+  {
+    field: 'merch_type',
+    headerName: 'Тип мерча',
+    width: 104,
+    renderCell: (params) => {
+      return (
+        <span className={styles.merch}>{params.row.merch_type}</span>
+      );
+    },
+  },
+  {
+    field: 'price',
+    headerName: 'Стоимость',
+    width: 104,
+    renderCell: (params) => {
+      return <span className={styles.merch}>{params.row.price}</span>;
+    },
+  },
+];

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { IAmbassador } from '@utils/types/ambassadorTypes';
 import {
   fetchAmbassador,
@@ -20,6 +20,10 @@ export const getAmbassadors = createAsyncThunk(
   }
 );
 
+export const pushAmbassador = createAction<string>(
+  '@@ambassadors/pushAmbassador'
+);
+
 export const getAmbassador = createAsyncThunk(
   '@@ambassadors/getAmbassador',
   async (
@@ -36,8 +40,9 @@ export const getAmbassador = createAsyncThunk(
 );
 
 interface IAmbassadorsState {
-  ambassadors: IAmbassador[];
+  ambassadors: IAmbassador[] | null;
   ambassador: IAmbassador | null;
+  curAmbassador: string | null;
   isLoading: boolean;
   error: string | null;
 }
@@ -45,7 +50,8 @@ interface IAmbassadorsState {
 const initialState: IAmbassadorsState = {
   ambassadors: [],
   ambassador: null,
-  isLoading: false,
+  curAmbassador: null,
+  isLoading: true,
   error: null,
 };
 
@@ -97,6 +103,12 @@ const ambassadorsSlice = createSlice({
           isLoading: false,
           ambassador: null,
           error: action.payload as string,
+        };
+      })
+      .addCase(pushAmbassador, (state, action) => {
+        return {
+          ...state,
+          curAmbassador: action.payload,
         };
       });
   },
