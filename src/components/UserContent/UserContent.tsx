@@ -5,15 +5,17 @@ import PostedContent from '@components/UserContent/PostedContent/PostedContent';
 import React, { FC } from 'react';
 import TabsMenu, { TabsVariants } from '@components/TabsMenu/TabsMenu';
 import { IconButton } from '@components/ui/Buttons/Buttons';
+import { IAmbassador } from '@utils/types/ambassadorTypes';
 import Edit from '@/assets/icons/Edit';
 import styles from './UserContent.module.scss';
 
 interface UserContentProps {
   value: number;
   onChange: (_event: React.SyntheticEvent, newValue: number) => void;
+  ambassador: IAmbassador;
 }
 
-const UserContent: FC<UserContentProps> = ({ value, onChange }) => {
+const UserContent: FC<UserContentProps> = ({ value, onChange, ambassador }) => {
   let UserData;
   switch (value) {
     case 0:
@@ -23,7 +25,7 @@ const UserContent: FC<UserContentProps> = ({ value, onChange }) => {
       UserData = <PostedContent />;
       break;
     case 2:
-      UserData = <LoyaltyProgram />;
+      UserData = <LoyaltyProgram ambassador={ambassador} />;
       break;
     default:
       UserData = <CommonInformation />;

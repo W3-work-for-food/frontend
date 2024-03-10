@@ -117,11 +117,13 @@ export const merchTableColumns: GridColDef[] = [
     },
   },
   {
-    field: 'type',
+    field: 'merch_type',
     headerName: 'Тип мерча',
     width: 104,
     renderCell: (params) => {
-      return <span className={styles.merch}>{params.row.type}</span>;
+      return (
+        <span className={styles.merch}>{params.row.merch_type}</span>
+      );
     },
   },
   {
@@ -132,4 +134,4 @@ export const merchTableColumns: GridColDef[] = [
       return <span className={styles.merch}>{params.row.price}</span>;
     },
   },
-]
+];

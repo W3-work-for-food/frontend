@@ -6,7 +6,7 @@ export const checkRes = (res: Response) => {
 };
 
 export const fetchData = async (url: string, data: object) => {
-  let res = await fetch(url, {
+  const res = await fetch(url, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -20,15 +20,22 @@ export const fetchData = async (url: string, data: object) => {
 export const fetchDataAuth = async (
   url: string,
   data: { access: string },
-  method = 'GET'
+  method: 'GET' | 'POST' = 'GET',
+  body?: string
 ) => {
-  let res = await fetch(url, {
+  const options: RequestInit = {
     method,
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
       Authorization: `Token ${data.access}`,
     },
-  });
+  };
+
+  if (body && method === 'POST') {
+    options.body = body;
+  }
+
+  const res = await fetch(url, options);
   return checkRes(res);
 };

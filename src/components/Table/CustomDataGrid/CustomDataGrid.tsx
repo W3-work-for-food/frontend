@@ -156,7 +156,7 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
 }));
 
 interface CustomDataGridFooterProps {
-  info: number | string;
+  info: number | string | undefined;
   columns: GridColDef[];
 }
 

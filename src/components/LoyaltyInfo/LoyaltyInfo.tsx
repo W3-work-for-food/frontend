@@ -1,53 +1,86 @@
-import styles from './LoyaltyInfo.module.scss';
 import { Box } from '@mui/material';
 import { DefaultInput } from '@components/ui/Inputs/Inputs';
 import { TableLabel } from '@components/ui/Form/Elements';
-const LoyaltyInfo = () => {
+import { FC } from 'react';
+import { IAmbassador } from '@utils/types/ambassadorTypes';
+import styles from './LoyaltyInfo.module.scss';
+
+interface AddressFieldProps {
+  label: string;
+  value: string | number;
+  idSuffix: string;
+}
+
+const AddressField: FC<AddressFieldProps> = ({ label, value, idSuffix }) => (
+  <Box component="div" className={styles.info__field}>
+    <TableLabel>{label}</TableLabel>
+    <DefaultInput
+      className={styles.info__input}
+      id={`address-${idSuffix}`}
+      aria-describedby={`address-${idSuffix}-text`}
+      value={value}
+      disabled
+    />
+  </Box>
+);
+
+interface LoyaltyInfoProps {
+  ambassador: IAmbassador;
+}
+
+const LoyaltyInfo: FC<LoyaltyInfoProps> = ({ ambassador }) => {
   return (
     <Box component="div" className={styles.info}>
       <Box component="p" className={styles.info__title}>
         Информация по доставке
       </Box>
       <Box component="div" className={styles.info__content}>
-        <Box component="div" className={styles.info__content_sizes}>
-          <Box component="div" className={`${styles.info__field} ${styles.info__field_clothes}`}>
-            <TableLabel>Размер одежды *</TableLabel>
-            <DefaultInput className={styles.info__input} id="clothing-size" aria-describedby="clothing-size-text" placeholder="XL" disabled />
-          </Box>
-          <Box component="div" className={`${styles.info__field} ${styles.info__field_step}`}>
-            <TableLabel>Размер одежды *</TableLabel>
-            <DefaultInput className={styles.info__input} id="clothing-size" aria-describedby="clothing-size-text" placeholder="43" disabled />
-          </Box>
+        <Box component="div" className={styles.info__contentSizes}>
+          <AddressField
+            label="Размер одежды *"
+            value={ambassador.profile.clothing_size}
+            idSuffix="clothing-size"
+          />
+          <AddressField
+            label="Размер ноги *"
+            value={ambassador.profile.foot_size}
+            idSuffix="foot-size"
+          />
         </Box>
-        <Box component="div" className={styles.info__content_adress}>
-          <Box component="p" className={styles.info__title_sm}>
+        <Box component="div" className={styles.info__contentAddress}>
+          <Box component="p" className={styles.info__titleSm}>
             Адрес
           </Box>
           <Box component="div" className={styles.info__addressFields}>
-            <Box component="div" className={styles.info__addressFields_row}>
-              <Box component="div" className={`${styles.info__field} ${styles.info__field_country}`}>
-                <TableLabel>Страна проживания *</TableLabel>
-                <DefaultInput className={styles.info__input} id="clothing-size" aria-describedby="clothing-size-text" placeholder="Россия" disabled />
-              </Box>
-              <Box component="div" className={`${styles.info__field} ${styles.info__field_index}`}>
-                <TableLabel>Индекс *</TableLabel>
-                <DefaultInput className={styles.info__input} id="clothing-size" aria-describedby="clothing-size-text" placeholder="145604" disabled />
-              </Box>
+            <Box component="div" className={styles.info__addressFieldsRow}>
+              <AddressField
+                label="Страна проживания *"
+                value={ambassador.address.country}
+                idSuffix="country"
+              />
+              <AddressField
+                label="Индекс *"
+                value={ambassador.address.postal_code}
+                idSuffix="postal-code"
+              />
             </Box>
-            <Box component="div" className={styles.info__addressFields_row}>
-              <Box component="div" className={`${styles.info__field} ${styles.info__field_city}`}>
-                <TableLabel>Город проживания *</TableLabel>
-                <DefaultInput className={styles.info__input} id="clothing-size" aria-describedby="clothing-size-text" placeholder="Москва" disabled />
-              </Box>
-              <Box component="div" className={`${styles.info__field} ${styles.info__field_region}`}>
-                <TableLabel>Область/район</TableLabel>
-                <DefaultInput className={styles.info__input} id="clothing-size" aria-describedby="clothing-size-text" disabled />
-              </Box>
+            <Box component="div" className={styles.info__addressFieldsRow}>
+              <AddressField
+                label="Город проживания *"
+                value={ambassador.address.city}
+                idSuffix="city"
+              />
+              <AddressField
+                label="Область/район"
+                value={ambassador.address.region}
+                idSuffix="region"
+              />
             </Box>
-            <Box component="div" className={`${styles.info__field} ${styles.info__field_adress}`}>
-              <TableLabel>Адрес проживания *</TableLabel>
-              <DefaultInput className={styles.info__input} id="clothing-size" aria-describedby="clothing-size-text" placeholder="ул. Большая Грузинская 87, стр. 7, кв. 678" disabled />
-            </Box>
+            <AddressField
+              label="Адрес проживания *"
+              value={ambassador.address.address}
+              idSuffix="address"
+            />
           </Box>
         </Box>
       </Box>
