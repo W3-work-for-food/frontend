@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Box } from '@mui/material';
 import Logo from '@icons/Logo';
 import Logout from '@icons/Logout';
@@ -18,6 +18,11 @@ const Header = () => {
   const user = useAppSelector((state: RootState) => state.user.user);
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
+
   const handleCloseModal = () => {
     setModalOpen(false);
   };
@@ -50,6 +55,7 @@ const Header = () => {
           <SecondaryButton
             component={Link}
             to="/ambassadors"
+            onClick={handleOpenModal}
             startIcon={<Logout />}
             style={{
               minWidth: '40px',
