@@ -1,0 +1,7 @@
+@import "@styles/global";
+
+.tab {
+  &__text {
+    @include Subtitle($Regular);
+  }
+}

@@ -1,10 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import ReactDOM from 'react-dom/client';
+import './index.scss';
+import WrappedApp from '@components/Layout/App/App';
+import { Provider } from 'react-redux';
+import { store } from '@/services/redux/store';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+  <Provider store={store}>
+    <WrappedApp />
+  </Provider>
+);

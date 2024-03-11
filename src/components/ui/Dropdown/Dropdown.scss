@@ -1,0 +1,31 @@
+@import "@styles/global";
+
+.custom-arrow-icon {
+    position: absolute;
+    right: 10px;
+    fill: $defaultInputFocusedBorderColor;
+    transform: rotate(0deg); // По умолчанию без вращения
+    transition: transform 0.09s ease; // Добавляем анимацию для плавного изменения поворота
+
+    path {
+        fill: $defaultInputFocusedBorderColor;
+    }
+}
+
+[aria-expanded="true"]+input+.custom-arrow-icon {
+    transform: rotate(180deg); // Поворачиваем на 180 градусов при aria-expanded="true"
+}
+
+.MuiList-root {
+    padding: 0 !important;
+
+    li {
+        font-family: $mainFont;
+        padding: 9px 16px 11px 16px;
+        font-size: $fs-secondMain;
+    }
+}
+
+.MuiPopover-root .MuiPaper-rounded {
+    border-radius: $borderRadius;
+}

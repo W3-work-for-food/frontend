@@ -1,0 +1,118 @@
+@import "variables";
+
+:export {
+  /**
+  ------------- COLORS -------------
+ */
+
+
+  /* -- MAIN COLORS -- */
+
+  globalWhite: $globalWhite;
+
+  // Text
+  fsSubTitle: $fs-subtitle;
+  fsMain: $fs-main;
+  fsSecondMain: $fs-secondMain;
+  fsCaption: $fs-caption;
+  fsSecondCaption: $fs-secondCaption;
+
+  fsLineHeight: $fs-line-height;
+
+  mainTextColor: $mainTextColor;
+  subtitlesColor: $subtitlesColor;
+
+  // Fields, Inputs and Buttons
+
+  defaultInputBorderColor: $defaultInputBorderColor;
+  defaultInputBgColor: $defaultInputBgColor;
+  defaultInputHoverBorderColor: $defaultInputHoverBorderColor;
+  defaultInputFocusedBorderColor: $defaultInputFocusedBorderColor;
+
+  defaultFiledColor: $defaultFiledColor;
+  disabledFiledColor: $disabledFiledColor;
+  activeFieldColor: $activeFieldColor;
+  hoverFiledColor: $hoverFiledColor;
+
+  // Main buttons
+
+  paddingsButtons: $paddingsButtons;
+
+  defaultBtnColor: $defaultBtnColor;
+  defaultDisabledBtnColor: $defaultDisabledBtnColor;
+  defaultDisabledBgBtnColor: $defaultDisabledBgBtnColor;
+  defaultHoverBtnColor: $defaultHoverBtnColor;
+  defaultOnClickBtnColor: $defaultOnClickBtnColor;
+
+  secondBtnColor: $secondBtnColor;
+  secondDisabledBtnColor: $secondDisabledBtnColor;
+  secondDisabledBgBtnColor: $secondDisabledBgBtnColor;
+  secondHoverBtnColor: $secondHoverBtnColor;
+  secondHoverBtnBorderColor: $secondHoverBtnBorderColor;
+  secondOnClickBtnColor: $secondOnClickBtnColor;
+
+
+  inverseBtnColor: $inverseBtnColor;
+  inverseBtnBorderColor: $inverseBtnBorderColor;
+  inverseHoverBtnColor: $inverseHoverBtnColor;
+  inverseHoverBtnBorderColor: $inverseHoverBtnBorderColor;
+  inverseOnClickBtnColor: $inverseOnClickBtnColor;
+  inverseOnClickBtnBorderColor: $inverseOnClickBtnBorderColor;
+  inverseDisabledBgBtnColor: $inverseDisabledBgBtnColor;
+  inverseDisabledBgBtnColor: $inverseDisabledBgBtnColor;
+  inverseDisabledBtnColor: $inverseDisabledBtnColor;
+
+
+
+  // Main checkboxes
+  defaultCheckboxColor: $defaultCheckboxColor;
+  defaultDisabledCheckboxColor: $defaultDisabledCheckboxColor;
+  defaultDisabledBorderCheckboxColor: $defaultDisabledBorderCheckboxColor;
+  defaultHoverCheckboxColor: $defaultHoverCheckboxColor;
+  defaultImageCheckboxColor: $defaultImageCheckboxColor;
+  defaultDisabledImageCheckboxColor: $defaultDisabledImageCheckboxColor;
+
+  // Backgrounds
+
+  screensBgColor: $screensBgColor;
+
+
+  /* -- SYSTEM COLORS -- */
+
+  errorsColor: $errorsColor;
+  successColor: $successColor;
+  warningColor: $warningColor;
+  warningLightColor: $warningLightColor;
+
+
+  /* -- ADDITION COLORS -- */
+
+  greenTag: $greenTag;
+  lightGreenTag: $lightGreenTag;
+  orangeTag: $orangeTag;
+  lightOrangeTag: $lightOrangeTag;
+  roseTag: $roseTag;
+  lightRoseTag: $lightRoseTag;
+  blueTag: $blueTag;
+  lightBlueTag: $lightBlueTag;
+
+  /* -- FONTS -- */
+  mainFont: $mainFont;
+  headingsFont: $headingsFont;
+
+  Medium: $Medium;
+  Bold: $Bold;
+  SemiBold: $SemiBold;
+  Regular: $Regular;
+
+  /* -- MODIFICATORS -- */
+  borderRadius: $borderRadius;
+  borderIconRadius: $borderIconRadius;
+  sizeIcon: $sizeIcon;
+
+  modalWidthMin: $modalWidthMin;
+  modalWidthMid: $modalWidthMid;
+  modalWidthMax: $modalWidthMax;
+  modalPadding: $modalPadding;
+
+}

@@ -1,0 +1,46 @@
+@import "@styles/global";
+
+.ambassadorPage{
+  display: grid;
+  background-color: transparent !important;
+  grid-template-columns: 282px 1fr;
+  grid-template-areas:
+    "profile common"
+    "comment common";
+  grid-template-rows: auto;
+  gap: 24px;
+}
+
+.controls{
+  grid-area: controls;
+  height: 76px;
+  @include displaySettings($justify: space-between);
+  margin-right: 32px;
+}
+
+.button{
+  @include Body2($Medium);
+}
+
+.modal{
+  @include H3($Medium);
+  text-align: start;
+
+  &__fields{
+    margin: 32px 0 28px;
+    @include displaySettings($align: start);
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__field{
+    width: 100%;
+  }
+
+  &__input {
+    width: 100%;
+    & input {
+      width: 100% !important;
+    }
+  }
+}

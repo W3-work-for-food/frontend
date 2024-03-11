@@ -1,0 +1,18 @@
+@import "@styles/global";
+
+.userContent {
+  grid-area: common;
+  background-color: $globalWhite;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 16px;
+  border-radius: 16px;
+  box-shadow: 1px 1px 2px 0px $shadowCard;
+
+  &__heading{
+    min-height: 40px;
+    @include displaySettings($justify: space-between);
+  }
+}
