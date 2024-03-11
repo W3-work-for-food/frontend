@@ -45,8 +45,10 @@ const LoyaltyProgram: FC<LoyaltyProgramProps> = ({ ambassador }) => {
   const budget: number = useAppSelector(
     (state: RootState) => state.merchs.budget
   );
+  console.log(budget);
   if (!merchs) return null;
   const merchRows = merchs.flatMap(transformMerchToRow);
+  console.log(merchRows);
 
   return (
     <Box className={styles.loyaltyProgram} component="div">
