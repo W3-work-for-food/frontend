@@ -109,9 +109,10 @@ const Ambassador = () => {
       sized_merch: [],
     };
 
-    console.log(requestBody);
     dispatch(postMerch({ access, id: id || '', body: requestBody }));
   };
+
+  if (!currentMerch[0].merch) return null;
 
   const merchItems = currentMerch[0].merch.map((m) => ({
     label: m.merch_type,
