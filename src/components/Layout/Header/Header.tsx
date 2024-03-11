@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Box } from '@mui/material';
 import Logo from '@icons/Logo';
 import Logout from '@icons/Logout';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ROUTE_LOGOUT } from '@utils/constants/routes';
-import { IconButton } from '../../ui/Buttons/Buttons';
+import { SecondaryButton } from '../../ui/Buttons/Buttons';
 import styles from './Header.module.scss';
 import UniversalModal from '@/components/ui/Modal/Modal';
 import {
@@ -52,12 +52,23 @@ const Header = () => {
           <Box className={styles.header__userName} component="p">
             {user.last_name} {user.first_name}
           </Box>
-          <IconButton onClick={handleOpenModal} startIcon={<Logout />} />
+          <SecondaryButton
+            component={Link}
+            to="/ambassadors"
+            onClick={handleOpenModal}
+            startIcon={<Logout />}
+            style={{
+              minWidth: '40px',
+              height: '40px',
+              padding: '0',
+              borderRadius: '12px',
+            }}
+          />
           <UniversalModal
             open={modalOpen}
             onClose={handleCloseModal}
             content={modalContent}
-            cancelButtonText="Отмена"
+            cancelButtonText="Отменить"
             confirmButtonText="Выйти"
             onConfirm={handleLogout}
             onCancel={handleCancel}

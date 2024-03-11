@@ -15,6 +15,7 @@ const Content: FC<ContentProps> = ({ children, className }) => {
         margin: '0 32px 32px 0',
         borderRadius: '16px',
         backgroundColor: vars.globalWhite,
+        boxShadow: '1px 1px 2px 0px #CBD5F1',
       }}
       className={className}
       component="div"

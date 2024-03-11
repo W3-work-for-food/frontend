@@ -33,7 +33,7 @@ const Table: FC<TableProps> = ({ columns, rows, budget }) => {
   return (
     <div
       style={{
-        height: columns === merchTableColumns ? 508 : 580,
+        height: columns === merchTableColumns ? '100%' : 628,
         width: '100%',
         padding: columns === merchTableColumns ? '0' : '32px 32px 16px',
         boxSizing: 'border-box',

@@ -84,25 +84,25 @@ const AmbassadorProfile: React.FC = () => {
               />
             </>
           ) : (
-            <>
-              E-mail
+            <div style={{ overflow: 'hidden' }}>
+              <span>E&#8209;mail</span>
               <span className={styles.container__data}>
                 <a href={`mailto:${email}`}>{email}</a>
               </span>
-            </>
+            </div>
           )}
         </li>
 
         <li className={styles.container__caption}>
           {isEditable ? (
-            <>
+            <div style={{ overflow: 'hidden' }}>
               <TableLabel>Telegram</TableLabel>
               <DefaultInput
                 type="text"
                 value={telegram}
                 onChange={(e) => setTelegram(e.target.value)}
               />
-            </>
+            </div>
           ) : (
             <>
               Telegram
@@ -115,21 +115,21 @@ const AmbassadorProfile: React.FC = () => {
 
         <li className={styles.container__caption}>
           {isEditable ? (
-            <>
+            <div style={{ overflow: 'hidden' }}>
               <TableLabel>Телефон</TableLabel>
               <DefaultInput
                 type="text"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
               />
-            </>
+            </div>
           ) : (
-            <>
+            <div style={{ overflow: 'hidden' }}>
               Телефон
               <span className={styles.container__data}>
                 <a href={`tel:${phone}`}>{phone}</a>
               </span>
-            </>
+            </div>
           )}
         </li>
       </ul>

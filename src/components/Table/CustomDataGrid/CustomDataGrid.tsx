@@ -31,7 +31,7 @@ const CustomDataGrid = styled(DataGrid)(({ columns }) => ({
       backgroundColor: 'transparent',
     },
     '&::-webkit-scrollbar-thumb': {
-      backgroundColor: vars.defaultFiledColor,
+      backgroundColor: vars.disabledFiledColor,
       borderRadius: '3px',
     },
   },

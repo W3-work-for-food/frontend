@@ -53,6 +53,7 @@ export const SecondaryButton = styled(({ to, ...props }: SecondaryButtonProps) =
   borderRadius: vars.borderRadius,
   backgroundColor: vars.secondBtnColor,
   border: `1px solid ${vars.secondBtnColor}`,
+
   '.MuiButton-startIcon': {
     marginRight: '0',
   },
@@ -68,6 +69,11 @@ export const SecondaryButton = styled(({ to, ...props }: SecondaryButtonProps) =
   },
   '&:focus': {
     boxShadow: 'rgba(0, 0, 0, 0.05) 0px 0px 0px 2px',
+  },
+  '.MuiButton-icon': {
+    display: "block",
+    height: '17px',
+    margin: '0',
   },
   '&.Mui-disabled': {
     backgroundColor: vars.secondDisabledBgBtnColor,

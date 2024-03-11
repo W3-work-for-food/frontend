@@ -68,6 +68,7 @@ const Ambassador = () => {
   const handleMerchTypeChange = (val: string | number) => {
     setSelectedMerchType(val.toString());
   };
+  console.log(currentMerch);
 
   const handleSubmit = () => {
     const merchItem = currentMerch[0].merch.find(
@@ -80,31 +81,24 @@ const Ambassador = () => {
     }
 
     const requestBody = {
-      id: id ? parseInt(id, 10) : 0,
-      date: '123456789', // Add the 'datets' property with a valid value
+      id: currentMerch.id,
+      date: '123456789',
       user: {
         first_name: user.first_name,
         last_name: user.last_name,
       },
       ambassador: {
-        id: currentAmbassador.id, // Add the 'id' property if it's required
+        id: currentAmbassador.id,
         pub_date: currentAmbassador.pub_date,
         telegram: currentAmbassador.telegram,
         name: currentAmbassador.name,
         status: currentAmbassador.status,
         comment,
         guide_status: currentAmbassador.guide_status,
-        profile: currentAmbassador.profile.id, // Assuming 'profile' has an 'id' property
+        profile: currentAmbassador.profile.id,
         address: currentAmbassador.address.id,
       },
-      merch: [
-        {
-          id: merchItem.id,
-          merch_type: merchItem.merch_type,
-          category: merchItem.category,
-          price: merchItem.price,
-        },
-      ],
+      merch: [merchItem],
       amount: 12312312,
       sized_merch: [],
     };

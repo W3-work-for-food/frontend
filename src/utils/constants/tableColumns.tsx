@@ -135,7 +135,7 @@ export const merchTableColumns: GridColDef[] = [
     headerName: 'Стоимость',
     width: 104,
     renderCell: (params) => {
-      return <span className={styles.merch}>{params.row.price}</span>;
+      return <span className={styles.merch}>{params.row.price} руб.</span>;
     },
   },
 ];
