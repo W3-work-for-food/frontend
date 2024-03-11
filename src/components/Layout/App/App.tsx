@@ -18,12 +18,12 @@ import {
   getAmbassadors,
 } from '@services/redux/slices/ambassadors/ambassadors';
 import { getMerch, getMerchBudget } from '@services/redux/slices/merch/merch';
+import Notifications from '@pages/Notifications/Notifications';
 import Logout from '@/pages/Logout';
 import Ambassador from '@/pages/Ambassador/Ambassador';
 import RequireAuth from '@/components/ReqAuth';
 import { ROUTE_HOME } from '@/utils/constants/routes';
 import Home from '@/pages/Home';
-import Notifications from '@pages/Notifications/Notifications';
 
 const App = () => {
   const dispatch = useAppDispatch();
