@@ -21,4 +21,7 @@ export default defineConfig({
       '@styles': '/src/assets/styles',
     },
   },
+  build: {
+    outDir: 'dist', // по умолчанию 'dist'
+  },
 });
